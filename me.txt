@@ -18,4 +18,19 @@ Tìm hiểu cấu trúc ứng dụng NextJs đầu tiên
     pages/api/ Là nơi có thể code backend(nodejs)
         http://localhost:3000/api/hello
         http://localhost:3000/user
+
+Deploy ứng dụng NextJs đầu tiên
+    Create new app: first-nextjs
+    Tab Deploy:
+        GitHub
+        Connect to GitHub
+    Connect to GitHub
+        repo-name: first-nextjs
+    Choose a branch to deploy:
+        master 
+        -> Deploy branch
+    View 
+    Application error
+        Edit package.json: "start": "next start -p $PORT"
+    https://first-nextjs.herokuapp.com/
     
