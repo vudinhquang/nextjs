@@ -33,4 +33,19 @@ Deploy ứng dụng NextJs đầu tiên
     Application error
         Edit package.json: "start": "next start -p $PORT"
     https://first-nextjs.herokuapp.com/
+
+=============================================================================================
+                            Tìm hiểu NextJs cơ bản
+
+Cài đặt và tích hợp Typescript với NextJs và React 
+    npm install --save-dev typescript @types/react @types/node
+    yarn dev
+    Khi sử dụng typescript thì các file liên quan(index.js...) thì đều có thể sử dụng song song 
+        cả javascript và typescript tuy nhiên khi làm dự án thực tế thì thường đổi lại đuôi của các 
+        file đó:
+        Dùng typescript: js -> ts
+        File nào dùng cú pháp của jsx(các file liên quan đến Component): js -> tsx
+            index.tsx
+            user.tsx
+        pages/api/hello.ts 
     
