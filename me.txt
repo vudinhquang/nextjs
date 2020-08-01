@@ -49,4 +49,6 @@ Cài đặt và tích hợp Typescript với NextJs và React
             user.tsx
         pages/api/hello.ts 
 Tìm hiểu về khái niệm Pages trong NextJs
+Tìm hiểu Dynamic Route
+    admin/user/[id]
     
