@@ -1,0 +1,21 @@
+                                        Giới thiệu NextJs
+            
+Tìm hiểu cấu trúc ứng dụng NextJs đầu tiên
+    Lệnh tạo project: 
+        npx create-next-app first-project-nextjs 
+    Cài đặt yarn: 
+        npm install -g yarn
+    Một số lệnh
+        npm run dev
+            Starts the development server.
+        npm run build
+            Builds the app for production.
+        npm start
+            Runs the built app in production mode.
+    npm run dev
+    Cấu trúc thư mục 
+    Mặc định trang chủ là:  pages/index.js 
+    pages/api/ Là nơi có thể code backend(nodejs)
+        http://localhost:3000/api/hello
+        http://localhost:3000/user
+    
