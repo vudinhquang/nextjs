@@ -48,4 +48,5 @@ Cài đặt và tích hợp Typescript với NextJs và React
             index.tsx
             user.tsx
         pages/api/hello.ts 
+Tìm hiểu về khái niệm Pages trong NextJs
     
