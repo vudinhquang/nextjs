@@ -51,4 +51,6 @@ Cài đặt và tích hợp Typescript với NextJs và React
 Tìm hiểu về khái niệm Pages trong NextJs
 Tìm hiểu Dynamic Route
     admin/user/[id]
+Tìm hiểu Routing Basic
+    Lấy được tham số ở trên đường dẫn 
     

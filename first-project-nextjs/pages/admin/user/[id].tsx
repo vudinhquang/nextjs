@@ -1,13 +1,22 @@
-import Head from 'next/head'
-
+import { useRouter } from 'next/router'
+import Link from 'next/link'
+// Demo Client Side Rendering
 export default function AdminUser() {
+    const router = useRouter()
+
+    console.log("router", router.query.id);
+
+    function handleOnClick() {
+        router.push('/login');
+    }
+
     return (
         <>
-            <Head>
-                <title>User Detail</title>
-                <link href="https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap" rel="stylesheet"></link>
-            </Head>
-            <h1>Admin -&gt; User Page</h1>
+            <h1>Admin -&gt; User Page {router.query.id}</h1>
+            <Link href="/login">
+                <button className="active">Go to homepage by a tag</button>
+            </Link>
+            <button onClick={handleOnClick}>Go to homepage</button>
         </>
     )
 }
