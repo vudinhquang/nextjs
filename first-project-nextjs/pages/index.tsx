@@ -9,9 +9,11 @@ const Home:React.FC = () => {
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="stylesheet" href="/css/global.css"></link>
       </Head>
 
       <main className={styles.main}>
+      <img src="/images/image_01.jpg" />
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>

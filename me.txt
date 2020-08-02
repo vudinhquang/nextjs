@@ -53,4 +53,5 @@ Tìm hiểu Dynamic Route
     admin/user/[id]
 Tìm hiểu Routing Basic
     Lấy được tham số ở trên đường dẫn 
+Tìm hiểu Static File Serving và cách cài đặt
     
