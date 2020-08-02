@@ -54,4 +54,13 @@ Tìm hiểu Dynamic Route
 Tìm hiểu Routing Basic
     Lấy được tham số ở trên đường dẫn 
 Tìm hiểu Static File Serving và cách cài đặt
+Custom lại Webpack và cách dùng File loader 
+    Custom Webpack Config
+    https://webpack.js.org/concepts/#loaders
+    npm install url-loader --save-dev
+    zeit config plugins
+        https://github.com/vercel/next-plugins
+        next-images
+        npm install --save next-images
+    npm remove url-loader
     
