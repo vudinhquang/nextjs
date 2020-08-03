@@ -63,4 +63,20 @@ Custom lại Webpack và cách dùng File loader
         next-images
         npm install --save next-images
     npm remove url-loader
+Custom App Component và CSS Module Support
+    pageProps = {
+       users: [],
+       posts: [],
+       isLogin: true 
+    }
+    {...pageProps}
+        users = pageProps.users
+        posts = pageProps.posts
+        isLogin = pageProps.isLogin
+    Sass Support
+        npm install --save @zeit/next-sass node-sass
+        https://github.com/vercel/next-plugins
+    module.exports = withImages(
+        withSass()
+    )
     
