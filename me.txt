@@ -79,4 +79,6 @@ Custom App Component và CSS Module Support
     module.exports = withImages(
         withSass()
     )
-    
+Custom App Component và Typescript
+    Khai báo Custom App theo kiểu Typescript -> Khai báo thêm kiểu cho App 
+    App: Có thể khai báo theo kiểu Class và function Component
