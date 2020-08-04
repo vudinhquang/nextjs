@@ -89,4 +89,5 @@ Custom App Component và Typescript
 Ôn tập Life Cycle cơ bản trong Class Component
     state: Là data của Component, do chính nó quản lý
     props: Là data của 2 nơi khác truyền vào cho nó, nó chỉ nhận thôi, không thể thay đổi
+Cách sử dụng State Hooks và so sánh
     

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 
 type StateType = {
-    counter: number
+    counter: number;
+    visible: boolean;
 }
 
 // babel + webpack
@@ -10,6 +11,7 @@ export default class LifeCycle extends Component<any, StateType> {
         super(props);
         this.state = {
             counter: 0,
+            visible: true,
         }
         console.log("constructor");
     }
@@ -40,11 +42,14 @@ export default class LifeCycle extends Component<any, StateType> {
                 <h1>Play Ground - Life Cycle - React Hooks</h1>
                 <button onClick={() => {
                     const counter = this.state.counter;
-                    this.setState({
-                        counter: counter + 1
+                    this.setState((prevState) => {
+                        return {
+                            counter: prevState.counter + 1
+                        }
                     })
                     // partial -> Một phần của state
                 }}>Counter Add</button>
+                <p>{this.state.counter}</p>
             </div>
         )
     }
