@@ -90,4 +90,11 @@ Custom App Component và Typescript
     state: Là data của Component, do chính nó quản lý
     props: Là data của 2 nơi khác truyền vào cho nó, nó chỉ nhận thôi, không thể thay đổi
 Cách sử dụng State Hooks và so sánh
+Tìm hiểu về useEffect trong Hooks
+    Use Effect
+        Trong LifeCycle thường là nơi gọi ra các service ở bên ngoài như là call API hay là dùng các 
+        dịch vụ bên ngoài của webservice của google, facebook...
+        useEffect Similar to componentDidMount and componentDidUpdate
+        Một useEffect có return về 1 function, thì function này giống như componentWillUnmount()
+            -> Component sẽ bị remove khỏi cấu trúc DOM 
     
