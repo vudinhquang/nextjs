@@ -82,3 +82,11 @@ Custom App Component và CSS Module Support
 Custom App Component và Typescript
     Khai báo Custom App theo kiểu Typescript -> Khai báo thêm kiểu cho App 
     App: Có thể khai báo theo kiểu Class và function Component
+
+=============================================================================================
+                            Life Cycle, React Hooks và ứng dụng
+            
+Ôn tập Life Cycle cơ bản trong Class Component
+    state: Là data của Component, do chính nó quản lý
+    props: Là data của 2 nơi khác truyền vào cho nó, nó chỉ nhận thôi, không thể thay đổi
+    
