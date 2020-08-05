@@ -1,12 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Button from "../../../components/Button";
 
 const LifeCycle = () => {
     // Dong dau tien ... Tuong ung voi Constructor
-
+    useMemo(() => {
+        console.log("constructor");
+    }, []);
+    
     const [counter, setCounter] = useState(0);
     const [visible, setVisible] = useState(true);
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState({
+        firstName: 'John',
+        lastName: 'Smith'
+    });
+
 
     // Similar to componentDidMount and componentDidUpdate:
     // Run khi bat ke state nao thay doi
@@ -36,10 +43,14 @@ const LifeCycle = () => {
         console.log("Lang nghe su thay doi cua visible");
     }, [visible]);
 
-    console.log("Truoc khi return(render)");
+    // Khong duoc lam dung.
+    const fullName = useMemo(() => {
+        return user.firstName + ' ' + user.lastName
+    }, [user]);
+
     return (
         <div className="container">
-            <h1>Play Ground - Life Cycle - React Hooks</h1>
+            <h1>Play Ground - Life Cycle - React Hooks {fullName}</h1>
             <button onClick={() => {
                     setCounter(counter+1)
                     // partial -> Một phần của state

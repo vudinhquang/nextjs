@@ -102,4 +102,13 @@ Tìm hiểu về useEffect trong Hooks
             console.log("Lang nghe su thay doi cua counter");
         }, [counter]);
         Lắng nghe counter thay đổi 
+Tìm hiểu về useMemo
+    Là 1 kỹ thuật dùng để cached dữ liệu lại 
+    Dùng để chuyển đổi dữ liệu
+    Không được lạm dụng, chỉ dùng khi biểu thức tính toán phức tạp 
+    Cách dùng khác là dùng để tạo contructor bằng cách truyền empty deps và ko return về gì cả -> chỉ chạy 1 
+        lần trước khi render
+        useMemo(() => {
+            console.log("constructor");
+        }, []);
     
