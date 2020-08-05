@@ -115,4 +115,6 @@ Tìm hiểu về useMemo
 Tìm hiểu về useCallback
     Returns a memoized callback.
     Không được lạm dụng, chỉ dùng khi biểu thức tính toán phức tạp
+Tìm hiểu về useRef
+    Thường dùng khi tham chiếu đến 1 DOM nào đó 
     
