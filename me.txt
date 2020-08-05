@@ -103,6 +103,7 @@ Tìm hiểu về useEffect trong Hooks
         }, [counter]);
         Lắng nghe counter thay đổi 
 Tìm hiểu về useMemo
+    Returns a memoized value.
     Là 1 kỹ thuật dùng để cached dữ liệu lại 
     Dùng để chuyển đổi dữ liệu
     Không được lạm dụng, chỉ dùng khi biểu thức tính toán phức tạp 
@@ -111,4 +112,7 @@ Tìm hiểu về useMemo
         useMemo(() => {
             console.log("constructor");
         }, []);
+Tìm hiểu về useCallback
+    Returns a memoized callback.
+    Không được lạm dụng, chỉ dùng khi biểu thức tính toán phức tạp
     
