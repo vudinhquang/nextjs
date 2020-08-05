@@ -97,4 +97,9 @@ Tìm hiểu về useEffect trong Hooks
         useEffect Similar to componentDidMount and componentDidUpdate
         Một useEffect có return về 1 function, thì function này giống như componentWillUnmount()
             -> Component sẽ bị remove khỏi cấu trúc DOM 
+    Use Effect deps: Có thể chỉ định lắng nghe sự thay đổi của state nào
+        useEffect(() => {
+            console.log("Lang nghe su thay doi cua counter");
+        }, [counter]);
+        Lắng nghe counter thay đổi 
     
