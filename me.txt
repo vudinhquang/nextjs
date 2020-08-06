@@ -124,4 +124,8 @@ Tìm hiểu Custom Hooks và useConstructor
         useMemo
         Sử dụng 1 Hooks do mình tự tạo ra để kế thừa 1 đoạn logic nào đó sử dụng đi sử dụng lại trong nhiều Component khác nhau
 Ứng dụng Hooks trong tình huống thực tế - Demo
+Solution 01
+    Lỗi document is not define
+    Khi tương tác đến server side render, phía server chạy trong môi trường nodeJs nên nó ko có trình duyệt -> không có document hay window 
+    -> Sử dụng react Hooks
     
