@@ -117,4 +117,10 @@ Tìm hiểu về useCallback
     Không được lạm dụng, chỉ dùng khi biểu thức tính toán phức tạp
 Tìm hiểu về useRef
     Thường dùng khi tham chiếu đến 1 DOM nào đó 
+Tìm hiểu Custom Hooks và useConstructor
+    Các cách để tạo ra 1 constructor:
+        Tạo 1 biến toàn cục
+        useRef
+        useMemo
+        Sử dụng 1 Hooks do mình tự tạo ra để kế thừa 1 đoạn logic nào đó sử dụng đi sử dụng lại trong nhiều Component khác nhau
     

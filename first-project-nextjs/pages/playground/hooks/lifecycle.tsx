@@ -1,12 +1,28 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import Button from "../../../components/Button";
+import useConstructor from "../../../custom-hooks/useConstructor";
+
+// Tao Custom Hook -> useConstructor
+//  -> Nhan vao mot function callback
+//  -> function nay chi duoc goi 1 lan duy nhat
+// useConstructor(() => { // hdjshdj })
+
+
+let isRun = false;
 
 const LifeCycle = () => {
+    // Tuong ung voi Constructor
+
+    useConstructor(() => {
+        console.log("constructor cach 4");
+    })
+
     // Dong dau tien ... Tuong ung voi Constructor
     useMemo(() => {
-        console.log("constructor");
+        console.log("constructor cach 3");
     }, []);
     
+    const isRunHook = useRef(false);
     const inputFileEl = useRef(null);
     const [counter, setCounter] = useState(0);
     const [visible, setVisible] = useState(true);
@@ -15,6 +31,17 @@ const LifeCycle = () => {
         lastName: 'Smith'
     });
 
+    if(isRunHook.current === false) {
+        console.log("constructor cach 2");
+
+        isRunHook.current = true;
+    }
+
+    if(isRun === false) {
+        // Xu li constructor
+        console.log("constructor cach 1");
+        isRun = true;
+    }
 
     // Similar to componentDidMount and componentDidUpdate:
     // Run khi bat ke state nao thay doi
