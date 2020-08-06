@@ -123,4 +123,5 @@ Tìm hiểu Custom Hooks và useConstructor
         useRef
         useMemo
         Sử dụng 1 Hooks do mình tự tạo ra để kế thừa 1 đoạn logic nào đó sử dụng đi sử dụng lại trong nhiều Component khác nhau
+Ứng dụng Hooks trong tình huống thực tế - Demo
     
