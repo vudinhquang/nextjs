@@ -7,7 +7,13 @@ export default function () {
     return (
         <div className="container">
             <ModalSolution
-                isVisible={true}
+                isVisible={openModal}
+                onOk={() => {
+                    console.log("Submit Form");
+                }}
+                onCancel={() => {
+                    setOpenModal(false)
+                }}
             >
                 <h2>Demo Modal</h2>
                 <form>

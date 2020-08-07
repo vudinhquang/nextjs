@@ -134,4 +134,7 @@ Solution 02
     useMemo: Vừa chạy phía server và vừa chạy phía client 
     useRef: Có thể dùng đối với biến toàn cục không thay đổi
     useState: Có thể dùng đối với biến toàn cục có sự thay đổi
+Solution 03
+    <></> Bao ngoài của return của 1 Component để tránh sinh ra tag không cần thiết 
+    renderFooter?: () => JSX.Element Trả về 1 cấu trúc html 
     
