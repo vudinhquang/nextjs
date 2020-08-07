@@ -128,4 +128,10 @@ Solution 01
     Lỗi document is not define
     Khi tương tác đến server side render, phía server chạy trong môi trường nodeJs nên nó ko có trình duyệt -> không có document hay window 
     -> Sử dụng react Hooks
+Solution 02
+    useRef chỉ lắng nghe phần tử thay đổi 
+    Chỉ chạy sau khi render -> chỉ chạy ở phía trình duyệt, ko chạy phía server 
+    useMemo: Vừa chạy phía server và vừa chạy phía client 
+    useRef: Có thể dùng đối với biến toàn cục không thay đổi
+    useState: Có thể dùng đối với biến toàn cục có sự thay đổi
     
