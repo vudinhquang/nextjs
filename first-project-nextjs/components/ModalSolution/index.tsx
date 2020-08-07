@@ -21,6 +21,17 @@ const ModalSolution: React.FC<ModalProps>= ({
     const [className, setClassName] = useState(CLASS_DEFAULT);
 
     useEffect(() => {
+        function handler(evt) {
+            if(evt.which === 27)
+                onCancel();
+        }
+        document.addEventListener("keyup", handler);
+        return () => {
+            document.removeEventListener("keyup", handler);
+        }
+    }, [])
+
+    useEffect(() => {
         if(isVisible === true) {
             // setClassName(CLASS_DEFAULT + " show");
             setClassName((oldClass) => oldClass + " show");
@@ -44,14 +55,15 @@ const ModalSolution: React.FC<ModalProps>= ({
         )
     }
 
+    if(isVisible === false) return null;
     return (
         <div className={className}>
-            <div className="tcl-mask"></div>
+            <div className="tcl-mask" onClick={onCancel}></div>
             <div className="tcl-dialog">
                 <div className="tcl-modal__content">   
                     <div className="tcl-modal__header">
                         Title demo
-                        <button className="tcl-modal__close">X</button>
+                        <button className="tcl-modal__close" onClick={onCancel}>X</button>
                     </div>                 
                     <div className="tcl-modal__body">
                         {children}

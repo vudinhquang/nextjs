@@ -137,4 +137,9 @@ Solution 02
 Solution 03
     <></> Bao ngoài của return của 1 Component để tránh sinh ra tag không cần thiết 
     renderFooter?: () => JSX.Element Trả về 1 cấu trúc html 
+Solution 04
+    useEffect: Chỉ chạy phía trình duyệt, ko chạy phía server
+    keycode javascript: https://keycode.info/
+    Clean up Using Hooks If your effect returns a function, React will run it when it is time to clean up
+        removeEventListener() remove đi EventListener đã đăng ký 
     
