@@ -10,15 +10,15 @@ export default function () {
                 openModal && 
                 <ModalSolution
                     isVisible={openModal}
-                    isRenderCloseIcon={false}
-                    onOk={() => {
-                        console.log("Submit Form");
-                    }}
+                    // isRenderCloseIcon={false}
+                    // onOk={() => {
+                    //     console.log("Submit Form");
+                    // }}
                     onCancel={() => {
                         setOpenModal(false)
                     }}
-                    btnCancelText="Huy Bo"
-                    btnOkText="Submit"
+                    // btnCancelText="Huy Bo"
+                    // btnOkText="Submit"
                 >
                     <h2>Demo Modal</h2>
                     <form>

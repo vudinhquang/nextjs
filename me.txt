@@ -144,4 +144,5 @@ Solution 04
         removeEventListener() remove đi EventListener đã đăng ký 
 Solution 05
     defaultProps: defaultProps is defined as a property on the component
+Solution 06
     

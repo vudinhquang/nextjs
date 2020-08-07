@@ -17,7 +17,7 @@ const CLASS_DEFAULT = "tcl-modal__wrapper";
 
 const ModalSolution: React.FC<ModalProps>= ({
     children, 
-    isVisible,
+    isVisible: isVisibleOutside,
     isRenderHeader,
     isRenderCloseIcon,
     btnOkText,
@@ -27,6 +27,7 @@ const ModalSolution: React.FC<ModalProps>= ({
     renderFooter
 }) => {
     const [className, setClassName] = useState(CLASS_DEFAULT);
+    const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
         function handler(evt) {
@@ -40,6 +41,10 @@ const ModalSolution: React.FC<ModalProps>= ({
     }, [])
 
     useEffect(() => {
+        setIsVisible(isVisibleOutside);
+    }, [ isVisibleOutside ])
+
+    useEffect(() => {
         if(isVisible === true) {
             // setClassName(CLASS_DEFAULT + " show");
             setClassName((oldClass) => oldClass + " show");
@@ -50,6 +55,14 @@ const ModalSolution: React.FC<ModalProps>= ({
         }
     }, [ isVisible ])
 
+    const _onCancel = (): void => {
+        if(onCancel) {
+            onCancel();
+        } else {
+            setIsVisible(false);
+        }
+    }
+
     const _renderFooter = (): JSX.Element => {
         if(renderFooter) {
             return renderFooter();
@@ -57,7 +70,7 @@ const ModalSolution: React.FC<ModalProps>= ({
 
         return (
             <>
-                <button className="tcl-modal__cancel" onClick={onCancel}>{btnCancelText}</button>
+                <button className="tcl-modal__cancel" onClick={_onCancel}>{btnCancelText}</button>
                 <button className="tcl-modal__ok" onClick={onOk}>{btnOkText}</button>
             </>
         )
@@ -66,7 +79,7 @@ const ModalSolution: React.FC<ModalProps>= ({
     if(isVisible === false) return null;
     return (
         <div className={className}>
-            <div className="tcl-mask" onClick={onCancel}></div>
+            <div className="tcl-mask" onClick={_onCancel}></div>
             <div className="tcl-dialog">
                 <div className="tcl-modal__content">   
                     {
@@ -75,7 +88,7 @@ const ModalSolution: React.FC<ModalProps>= ({
                             Title demo
                             {
                                 isRenderCloseIcon &&
-                                <button className="tcl-modal__close" onClick={onCancel}>X</button>
+                                <button className="tcl-modal__close" onClick={_onCancel}>X</button>
                             }
                         </div>
                     }                 
