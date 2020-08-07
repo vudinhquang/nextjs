@@ -142,4 +142,6 @@ Solution 04
     keycode javascript: https://keycode.info/
     Clean up Using Hooks If your effect returns a function, React will run it when it is time to clean up
         removeEventListener() remove đi EventListener đã đăng ký 
+Solution 05
+    defaultProps: defaultProps is defined as a property on the component
     

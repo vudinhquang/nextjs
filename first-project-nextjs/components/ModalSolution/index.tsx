@@ -4,6 +4,10 @@ import { type } from "os";
 
 type ModalProps = {
     isVisible?: boolean;
+    isRenderHeader?: boolean;
+    isRenderCloseIcon?: boolean;
+    btnOkText?: string;
+    btnCancelText?: string;
     onOk?: () => void;
     onCancel?: () => void;
     renderFooter?: () => JSX.Element;
@@ -14,6 +18,10 @@ const CLASS_DEFAULT = "tcl-modal__wrapper";
 const ModalSolution: React.FC<ModalProps>= ({
     children, 
     isVisible,
+    isRenderHeader,
+    isRenderCloseIcon,
+    btnOkText,
+    btnCancelText,   
     onOk,
     onCancel,
     renderFooter
@@ -49,8 +57,8 @@ const ModalSolution: React.FC<ModalProps>= ({
 
         return (
             <>
-                <button className="tcl-modal__cancel" onClick={onCancel}>Cancel</button>
-                <button className="tcl-modal__ok" onClick={onOk}>Ok</button>
+                <button className="tcl-modal__cancel" onClick={onCancel}>{btnCancelText}</button>
+                <button className="tcl-modal__ok" onClick={onOk}>{btnOkText}</button>
             </>
         )
     }
@@ -61,10 +69,16 @@ const ModalSolution: React.FC<ModalProps>= ({
             <div className="tcl-mask" onClick={onCancel}></div>
             <div className="tcl-dialog">
                 <div className="tcl-modal__content">   
-                    <div className="tcl-modal__header">
-                        Title demo
-                        <button className="tcl-modal__close" onClick={onCancel}>X</button>
-                    </div>                 
+                    {
+                        isRenderHeader && 
+                        <div className="tcl-modal__header">
+                            Title demo
+                            {
+                                isRenderCloseIcon &&
+                                <button className="tcl-modal__close" onClick={onCancel}>X</button>
+                            }
+                        </div>
+                    }                 
                     <div className="tcl-modal__body">
                         {children}
                     </div>
@@ -76,6 +90,14 @@ const ModalSolution: React.FC<ModalProps>= ({
             </div>
         </div>
     )
+}
+
+ModalSolution.defaultProps = {
+    isVisible: false,
+    btnCancelText: "Cancel",
+    btnOkText: "Ok",
+    isRenderHeader: true,
+    isRenderCloseIcon: true,
 }
 
 export default ModalSolution;
