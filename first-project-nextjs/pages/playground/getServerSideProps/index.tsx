@@ -1,7 +1,6 @@
 // import React, { useEffect, useState } from "react";
 import React from "react";
 import Link from 'next/link'
-import { NextPage, NextPageContext } from 'next'
 
 const BASE_URL = "http://api-meme-zendvn-01.herokuapp.com/api"
 
@@ -14,25 +13,12 @@ type PropsType = {
     posts: PostType[]
 }
 
-
-const DemoGetIntialProps: NextPage<PropsType> = ({ posts }: PropsType) => {
-
-    /*
-    const [posts, setPosts] = useState([]);
-    useEffect(() => {
-        fetch(BASE_URL + '/post/getListPagination.php?pagesize=5&currPage=1')
-        .then(async (response) => {
-            const data = await response.json();
-            setPosts(data.posts);
-            console.log(data.posts);
-        }) 
-    }, []);
-    */
+const DemoGetServerSideProps = ({ posts }) => {
 
     return (
         <div className="container">
-            <h1>Demo GetIntialProps</h1>
-            <Link href="/playground/getInitialProps/test">
+            <h1>Demo GetServerSideProps </h1>
+            <Link href="/playground/getServerSideProps/test">
                 <a>Di chuyen qua trang Test</a>
             </Link>
             <ul>
@@ -46,13 +32,21 @@ const DemoGetIntialProps: NextPage<PropsType> = ({ posts }: PropsType) => {
     )
 }
 
-DemoGetIntialProps.getInitialProps = async (ctx: NextPageContext) => {
+// Khong lien quan gi toi NextJs -> La kien thuc cua ReactJs thuan
+DemoGetServerSideProps.defaultProps = {
+    posts: []
+}
+
+export const getServerSideProps = async (context) => {
     const response = await fetch(BASE_URL + '/post/getListPagination.php?pagesize=5&currPage=1');
     const data = await response.json();
 
-    return {
+    const props = {
         posts: data.posts
+    }
+    return {
+        props
     }
 }
 
-export default DemoGetIntialProps;
+export default DemoGetServerSideProps;

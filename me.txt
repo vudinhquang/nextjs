@@ -180,4 +180,15 @@ GetIntialProps 02
                 -> Sau do App se tro thanh Client Side Render
     GetIntialProps chỉ gọi phía server 1 lần duy nhất khi người dùng reload lại trang, sau đó nếu di 
         chuyển bằng thẻ link thì nó sẽ trở thành client side(gọi ở phía client)
+getServerSideProps
+    GetServerSideProps 01
+        GetServerSideProps: Fetch data on each request.
+        Luôn gọi API server side mà không gọi ở phía client
+        next/link:
+        1. getInitialProps -> trực tiếp gọi sang API của herokuapp
+
+        2. getServerSideProps
+            -> Gọi APi vào Server NextJs - Bước trung gian này do NextJs làm tự động cho mình
+            -> Server NextJs -> Gọi sang API của HerokuApp
+                -> Che giấu được API phía herokuapp
     
