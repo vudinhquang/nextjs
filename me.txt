@@ -157,4 +157,9 @@ Postman Collection
         Add: Môi trường là Nextjs
         base_url: http://api-meme-zendvn-01.herokuapp.com/api
         Api: {{base_url}}/post/getListPagination.php?pagesize=3&currPage=1
+Fetch Data trong NextJs
+    Gọi API bằng code javascript
+    javascript using fetch api
+    Đối với ReactJs thì gọi API thường đặt trong các LifeCycle
+    -> Đây là cách làm của React thông thường chỉ có Client Side Render 
     
