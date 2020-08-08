@@ -166,4 +166,18 @@ getIntialProps trong NextJs Hàm hỗ trợ sãn của NextJs giúp mình có th
     Chỉ có thể viết được trong page mà không thể viết được trong Component
     Là 1 Static method
     GetIntialProps 01
+GetIntialProps 02
+    Các cách mà người dùng truy cập vào trang web
+        1. F5: Request lai len phia server -> Nhan lai HTML hoan toan moi
+
+        2. Di chuyen qua lai giua cac trang trong App (Thong qua Router Link cua NextJs)
+            - Vua la Server side render
+            - Vua la Client side render
+
+            - Trong lan load trang dau tien
+                -> User nhan duoc HTML hoan chinh khi request len Server
+                -> Trong ma nguon HTML chua nhung file javascript lien quan toi React
+                -> Sau do App se tro thanh Client Side Render
+    GetIntialProps chỉ gọi phía server 1 lần duy nhất khi người dùng reload lại trang, sau đó nếu di 
+        chuyển bằng thẻ link thì nó sẽ trở thành client side(gọi ở phía client)
     

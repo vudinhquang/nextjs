@@ -1,5 +1,6 @@
 // import React, { useEffect, useState } from "react";
 import React from "react";
+import Link from 'next/link'
 import { NextPage } from 'next'
 
 const BASE_URL = "http://api-meme-zendvn-01.herokuapp.com/api"
@@ -31,6 +32,9 @@ const DemoGetIntialProps = ({ posts }) => {
     return (
         <div className="container">
             <h1>Demo GetIntialProps</h1>
+            <Link href="/playground/getInitialProps/test">
+                <a>Di chuyen qua trang Test</a>
+            </Link>
             <ul>
                 {
                     posts.map((post) => {
@@ -45,7 +49,7 @@ const DemoGetIntialProps = ({ posts }) => {
 DemoGetIntialProps.getInitialProps = async ({ req }) => {
     const response = await fetch(BASE_URL + '/post/getListPagination.php?pagesize=5&currPage=1');
     const data = await response.json();
-    
+
     return {
         posts: data.posts
     }
