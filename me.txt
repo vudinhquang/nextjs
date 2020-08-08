@@ -145,4 +145,16 @@ Solution 04
 Solution 05
     defaultProps: defaultProps is defined as a property on the component
 Solution 06
+
+=============================================================================================
+                            Data Fetching và Server API
+
+Postman Collection
+    Cách Import 1 Postman Collection(Một tập hợp các API, các HttpResquest mà backend cung cấp)
+        Collections -> Import 
+    Tạo biến môi trường: base_url
+        Manage Environments
+        Add: Môi trường là Nextjs
+        base_url: http://api-meme-zendvn-01.herokuapp.com/api
+        Api: {{base_url}}/post/getListPagination.php?pagesize=3&currPage=1
     
