@@ -191,4 +191,6 @@ getServerSideProps
             -> Gọi APi vào Server NextJs - Bước trung gian này do NextJs làm tự động cho mình
             -> Server NextJs -> Gọi sang API của HerokuApp
                 -> Che giấu được API phía herokuapp
+    GetServerSideProps 02
+        Khai báo kiểu dữ liệu 
     
