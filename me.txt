@@ -162,4 +162,8 @@ Fetch Data trong NextJs
     javascript using fetch api
     Đối với ReactJs thì gọi API thường đặt trong các LifeCycle
     -> Đây là cách làm của React thông thường chỉ có Client Side Render 
+getIntialProps trong NextJs Hàm hỗ trợ sãn của NextJs giúp mình có thể gọi API ở phía server
+    Chỉ có thể viết được trong page mà không thể viết được trong Component
+    Là 1 Static method
+    GetIntialProps 01
     

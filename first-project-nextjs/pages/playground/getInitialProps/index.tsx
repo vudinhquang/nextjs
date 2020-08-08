@@ -1,10 +1,23 @@
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
+import React from "react";
+import { NextPage } from 'next'
 
 const BASE_URL = "http://api-meme-zendvn-01.herokuapp.com/api"
 
-const DemoGetIntialProps = () => {
-    const [posts, setPosts] = useState([]);
+type PostType = {
+    PID: string;
+    post_content: string;
+}
 
+type PropsType = {
+    posts: PostType[]
+}
+
+
+const DemoGetIntialProps = ({ posts }) => {
+
+    /*
+    const [posts, setPosts] = useState([]);
     useEffect(() => {
         fetch(BASE_URL + '/post/getListPagination.php?pagesize=5&currPage=1')
         .then(async (response) => {
@@ -13,6 +26,7 @@ const DemoGetIntialProps = () => {
             console.log(data.posts);
         }) 
     }, []);
+    */
 
     return (
         <div className="container">
@@ -26,6 +40,15 @@ const DemoGetIntialProps = () => {
             </ul>
         </div>
     )
+}
+
+DemoGetIntialProps.getInitialProps = async ({ req }) => {
+    const response = await fetch(BASE_URL + '/post/getListPagination.php?pagesize=5&currPage=1');
+    const data = await response.json();
+    
+    return {
+        posts: data.posts
+    }
 }
 
 export default DemoGetIntialProps;
