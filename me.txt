@@ -230,4 +230,14 @@ getStaticPaths
             Nếu khai báo fallback: true
                 khi truy cập vào URL khác id 20 và 30 thì getStaticProps được gọi để lấy link còn lại(40, 50, 60)
         When you use getStaticProps on a page with dynamic route parameters, you must use getStaticPaths.
+Tổng kết và Ôn tập về Data Fetching
+    getInitialProps
+        Ưu điểm: Tốt cho SEO, giảm tải phía server
+        Nhược điểm: Dễ bị lộ Endpoints về data của API
+    getServerSideProps: Fetch data trong mỗi request
+        Ưu điểm: Tốt cho SEO, che dấu được Endpoints
+        Nhược điểm: Tốc độ ứng dụng sẽ chậm hơn với nhũng lần sau. Tăng tải phía server
+    getStaticProps
+        Ưu điểm: Tốt cho SEO. Tốc độ tải cực nhanh tại 1 thời điểm nhất định
+        Nhược điểm: Không nhận được dữ liệu thay đổi mới nhất trong Database nếu không có Re build
     
