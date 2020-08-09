@@ -193,4 +193,7 @@ getServerSideProps
                 -> Che giấu được API phía herokuapp
     GetServerSideProps 02
         Khai báo kiểu dữ liệu 
+Một số lưu ý về Typescript
+    getInitialProps sử dụng NextPage bởi vì trong NextPage đã khai báo sẵn getInitialProps
+    getServerSideProps Không dùng NextPage -> có thể dùng React.FC
     

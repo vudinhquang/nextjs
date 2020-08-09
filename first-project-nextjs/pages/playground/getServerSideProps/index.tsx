@@ -15,10 +15,10 @@ type PropsType = {
     posts: PostType[]
 }
 
-type PagePropsType = NextPage<InferGetServerSidePropsType<typeof getServerSideProps>>
+type PagePropsType = React.FC<InferGetServerSidePropsType<typeof getServerSideProps>>
 
 // const DemoGetServerSideProps = ({ posts }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-const DemoGetServerSideProps: PagePropsType = ({ posts }) => {
+const DemoGetServerSideProps: PagePropsType = ({ posts }: PropsType) => {
 
     return (
         <div className="container">
@@ -42,13 +42,23 @@ DemoGetServerSideProps.defaultProps = {
     posts: []
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps<PropsType> = async (context) => {
     const response = await fetch(BASE_URL + '/post/getListPagination.php?pagesize=5&currPage=1');
     const data = await response.json();
 
-    const props: PropsType = {
+    const posts: PostType[] = data.posts;
+
+    /*
+    return {
+        props: {
+            posts
+        }
+    }
+    */
+    const props = {
         posts: data.posts
     }
+
     return {
         props
     }
