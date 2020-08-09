@@ -196,4 +196,15 @@ getServerSideProps
 Một số lưu ý về Typescript
     getInitialProps sử dụng NextPage bởi vì trong NextPage đã khai báo sẵn getInitialProps
     getServerSideProps Không dùng NextPage -> có thể dùng React.FC
+Static generation và getStaticProps
+    3. getStaticProps
+        -> Gọi API lên phía Heroku 1 lần duy nhất trong thời điểm build code (yarn build)
+        -> Sau khi build đưa lên môi trường production 
+            -> Khi truy cập vào nó như là một static page (html tĩnh)
+            -> Dữ liệu đã có sẵn rồi. -> Không gọi API lần nữa (Được cached)
+
+        - Ưu điểm: Thời gian load trang rất nhanh
+        - Nhược điểm: Nếu dữ liệu của API đó bị thay đổi trên herokuapp 
+            -> Ứng dụng của mình sẽ không cập nhật được dữ liệu mới đó
+            -> Nếu muốn có dữ liệu mới phải build lại
     
