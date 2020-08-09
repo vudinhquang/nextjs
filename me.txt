@@ -207,4 +207,27 @@ Static generation và getStaticProps
         - Nhược điểm: Nếu dữ liệu của API đó bị thay đổi trên herokuapp 
             -> Ứng dụng của mình sẽ không cập nhật được dữ liệu mới đó
             -> Nếu muốn có dữ liệu mới phải build lại
+getStaticPaths
+    4. getStaticPaths -> Phai ket hop di chung voi getStaticProps
+        Dùng đối với những trang dùng Dynamic Routing
+        - List bai viet
+            -> Trong lần build code -> Biết được rõ ràng API nào được gọi trước (API get list posts)
+        - Có những trang dùng Dynamic Routing
+            + Ví dụ như trang bài viết chi tiết
+            Ví dụ URL: /post/[id].tsx
+                id = 20 -> Goi APi get bai viet co id 20
+                id = 30 -> Get API get bai viet co id 30
+        Giả sử trên Server HerokuApp có 5 bài viết: id = 20, 30, 40, 50, 60
+        Dung thằng getStaticPaths 
+            return {
+                paths: [
+                    { params: { id: 20 } },
+                    { params: { id: 30 } }
+                ],
+                fallback: false (Link du phong = false)
+            }
+            -> Nếu User truy cập vào URL khác id 20 và 30 -> Không có link dự phòng -> Đẩy ngay qua trang 404
+            Nếu khai báo fallback: true
+                khi truy cập vào URL khác id 20 và 30 thì getStaticProps được gọi để lấy link còn lại(40, 50, 60)
+        When you use getStaticProps on a page with dynamic route parameters, you must use getStaticPaths.
     
