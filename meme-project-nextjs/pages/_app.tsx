@@ -1,18 +1,29 @@
 import Head from 'next/head'
 import App from "next/app";
 import { AppContext, AppProps } from "next/app";
-import { useEffect } from "react";
+import { useMemo } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/css/style.css";
 
 import { Header } from "../components/Header";
+import { Footer } from "../components/Footer";
 
 function MyApp({ Component, pageProps, router }: AppProps) {
 
-  useEffect(() => {
-    console.log("router", router);
-  }, [])
+  const hiddenFooter = useMemo(() => {
+    const excluded = [ '/' ];
+    const currentRouter = router.pathname;
+
+    return excluded.indexOf(currentRouter) !== -1;
+  }, [router])
+
+  const hiddenHeader = useMemo(() => {
+    const excluded = [ '/login', '/register' ];
+    const currentRouter = router.pathname;
+
+    return excluded.indexOf(currentRouter) !== -1;
+  }, [router]);
 
   return (
     <div className="root-app">
@@ -36,8 +47,11 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         {/*[if lt IE 9]>
         <![endif]*/}
       </Head>
-      <Header/>
-      <Component {...pageProps} />
+      { !hiddenHeader && <Header /> }
+      <main>
+        <Component {...pageProps} />
+      </main>
+      { !hiddenFooter && <Footer /> }
     </div>
   )
 }

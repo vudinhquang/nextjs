@@ -309,4 +309,9 @@ Khởi tạo và thiết lập cấu trúc dự án
                     Rồi sau đó import theo module 
                         import "bootstrap/dist/css/bootstrap.min.css";
                         import "../assets/css/style.css";
-            
+Xây dựng trang Home, Login và Register
+    Ở trang HomePage thì không muốn show ra phần Footer
+        -> useMemo tạo ra 1 biến 
+        useMemo được chạy trước khi render
+    Trang Login và Register thì không show phần header 
+    
