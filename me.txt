@@ -279,4 +279,13 @@ Khởi tạo và thiết lập cấu trúc dự án
         - next.config.js
             - const withSass = require('@zeit/next-sass')
             - withCSS()
+    ##Tạo Master Layout cho ứng dụng: Là bố cục xuyên suốt trong project trong tất cả các trang
+    - Custom App
+        https://nextjs.org/docs/advanced-features/custom-app
+        To override the default App, create the file ./pages/_app.js
+        _app.js không phải là Page nên không sử dụng được getServerSideProps hay getStaticProps mà chỉ sử dụng được 
+            getInitialProps
+        - page/app.js -> page/app.tsx
+        - Tạo Component Header: Convert html của header sang jsx
+            Convert html to jsx
     
