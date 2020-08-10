@@ -288,4 +288,25 @@ Khởi tạo và thiết lập cấu trúc dự án
         - page/app.js -> page/app.tsx
         - Tạo Component Header: Convert html của header sang jsx
             Convert html to jsx
-    
+        - Khai báo phần thẻ head của html(có chuyển sang jsx)
+            - _app.tsx
+                import Head from 'next/head'
+                Thêm thẻ <Head>
+            - folder css, fonts, images -> public 
+            - css/styles.css 
+                background-image: url('../images/menu-bg.jpg'); 
+                -> background-image: url('/images/menu-bg.jpg');
+            - Bootstrap v4.1.3
+                Bootstrap npm 
+                - yarn add bootstrap@4.1.3
+                - _app.tsx
+                    import "bootstrap/dist/css/bootstrap.min.css";
+            - Nguyên tắc khai báo là thư viện phải được khai báo trước
+                bootstrap.min.css -> style.css
+                Do đó style.css sẽ không tạo file trong public
+                Để thay đổi đúng thứ tự bootstrap.min.css -> style.css
+                    -> assets/css/style.css 
+                    Rồi sau đó import theo module 
+                        import "bootstrap/dist/css/bootstrap.min.css";
+                        import "../assets/css/style.css";
+            

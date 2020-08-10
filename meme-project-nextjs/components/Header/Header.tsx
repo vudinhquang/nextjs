@@ -4,7 +4,7 @@ export default function Header() {
             <div className="ass1-header">
                 <div className="container">
                     <a href="index.html" className="ass1-logo">
-                        ZendVn Meme
+                        Meme Project
                     </a>
                     <nav>
                         <ul className="ass1-header__menu">
