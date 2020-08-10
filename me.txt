@@ -240,4 +240,43 @@ Tổng kết và Ôn tập về Data Fetching
     getStaticProps
         Ưu điểm: Tốt cho SEO. Tốc độ tải cực nhanh tại 1 thời điểm nhất định
         Nhược điểm: Không nhận được dữ liệu thay đổi mới nhất trong Database nếu không có Re build
+
+=============================================================================================
+                            Project thực tế (NextJs + React + Typescrpit)
+
+Khởi tạo và thiết lập cấu trúc dự án
+    # Các bước Setup Project
+    ## Cài đặt next app 
+    - npx create-next-app meme-project-nextjs
+    ## Cài đặt Typescript
+    ### Tạo File tsconfig.json và run code
+    - tsconfig.json, file này tạo xong và không cần phải làm gì cả mà khi run lại(npm run dev) thì nội 
+        dung sẽ tự động được thêm vào
+    - yarn add --dev typescript @types/react @types/node    -------> Cài các package liên quan
+    - npm run dev
+    - Đổi đuôi index.js -> index.tsx
+               api/hello.js -> api/hello.ts
+    -> File next-env.d.ts sẽ được sinh tự động 
+    -> Nội dung trong tsconfig.json sẽ được cấu hình tự động
+    ## Tạo thêm config cho images, sass, css
+    - Tạo file: next.config.js
+    - https://github.com/vercel/next-plugins
+        -> next-images(https://github.com/twopluszero/next-images)
+        - yarn add next-images
+        - next.config.js: Thêm nội dung
+            // next.config.js
+            const withImages = require('next-images')
+            module.exports = withImages()  
+        - next-env.d.ts: Thêm nội dung
+            /// <reference types="next-images" /> 
+    - https://github.com/vercel/next-plugins/tree/master/packages/next-css
+        - yarn add @zeit/next-css
+        - next.config.js
+            - const withCSS = require('@zeit/next-css')
+            - withCSS()
+    - https://github.com/vercel/next-plugins/tree/master/packages/next-sass
+        - yarn add @zeit/next-sass node-sass
+        - next.config.js
+            - const withSass = require('@zeit/next-sass')
+            - withCSS()
     
