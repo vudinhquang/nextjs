@@ -37,8 +37,8 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
         <title>Cộng đồng chế ảnh</title>
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />
-        <link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.css" />
-	      <link rel="stylesheet" href="fonts/emotion/style.css" />
+        <link rel="stylesheet" href="/fonts/font-awesome/css/font-awesome.css" />
+	      <link rel="stylesheet" href="/fonts/emotion/style.css" />
 
         {/* JAVA SCRIPT */}
         {/* require */}

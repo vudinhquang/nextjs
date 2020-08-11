@@ -314,4 +314,37 @@ Xây dựng trang Home, Login và Register
         -> useMemo tạo ra 1 biến 
         useMemo được chạy trước khi render
     Trang Login và Register thì không show phần header 
+Xây dựng trang Create
+    Tạo 1 Snippets: File - References - User Snippets - typescriptreact.json
+        "quang_component": {
+            "prefix": "quang_component",
+            "body": [
+                "export default function $1() {",
+                "\treturn (",
+                "\t\t$2",
+                "\t)",
+                "}",
+            ],
+            "description": "export default function ~()"
+        },
+        "export default const": {
+            "prefix": "quang_component_const",
+            "body": [
+                "const $1 = () => {",
+                "\treturn (",
+                "\t\t$2",
+                "\t)",
+                "}",
+                "export default $1;"
+            ],
+            "description": "export default function ~()"
+        },
+    File - References - User Snippets - typescript.json
+        "export ~ from": {
+            "prefix": "quang_export_normal",
+            "body": [
+                "export { default as $1} from \"./$1\"",
+            ],
+            "description": "export ~ from"
+        }
     
