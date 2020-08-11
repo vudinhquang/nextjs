@@ -347,4 +347,5 @@ Xây dựng trang Create
             ],
             "description": "export ~ from"
         }
+Xây dựng trang Detail
     
