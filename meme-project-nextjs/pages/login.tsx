@@ -1,4 +1,5 @@
 import { useState } from "react";
+import api from "../services/api";
 
 interface FormLogin {
     email: string;
@@ -21,6 +22,15 @@ export default function Login() {
         })
     }
 
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        console.log(formData);
+        api.callJson('member/login.php', formData, 'POST')
+            .then(data => {
+                console.log(data);
+            });
+    }
+
     return (
         <div className="ass1-login">
             <div className="ass1-login__logo">
@@ -29,7 +39,7 @@ export default function Login() {
             <div className="ass1-login__content">
             <p>Đăng nhập</p>
             <div className="ass1-login__form">
-                <form action="#">
+                <form action="#" onSubmit={handleSubmit}>
                 <input 
                     value={formData.email}
                     onChange={handleOnChange('email')}
