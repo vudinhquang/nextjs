@@ -2,12 +2,16 @@ import Head from 'next/head'
 import App from "next/app";
 import { AppContext, AppProps } from "next/app";
 import { useMemo } from "react";
+import fetch from "isomorphic-fetch";
+import es6Promise from "es6-promise";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/css/style.css";
 
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
+
+es6Promise.polyfill();
 
 function MyApp({ Component, pageProps, router }: AppProps) {
 

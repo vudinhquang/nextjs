@@ -351,4 +351,21 @@ Xây dựng trang Detail
 Xây dựng trang liên quan tới User
     Trang user Detail hay trang đổi mật khẩu thì url không cần phải truyền id mà id này sẽ được lưu trong cookie 
     Nếu cookie không tồn tại thì đẩy về trang home 
+
+=============================================================================================
+                            Nhóm chức năng Authentication
+                    
+Thuật ngữ Authentication và Authorization
+    Authentication: Là quá trình xác thực người dùng thông qua các đặc điểm nhận dạng của người dùng như username,
+        password hay cơ chế token...
+    Authorization: Ủy quyền, phân quyền thực hiện sau khi quá trình xác thực người dùng(Authentication) thành công
+    Fetch: 
+        can i use: https://caniuse.com/
+        Là 1 chức năng của ES trở lên nên khi dùng nó thì cần dùng các công cụ để chuyển đổi nó về các dạng phiên 
+            bản thấp hơn để hỗ trợ các trình duyệt phiên bản thấp hơn
+        Đối với dạng server thì không nên dùng Fetch vì phía server không có trình duyệt
+        -> Dùng các thư viện hỗ trợ: isomorphic-fetch
+        npm install --save isomorphic-fetch es6-promise
+        _app.tsx: MyApp.getInitialProps = async (appContext: AppContext)
+        orther:   DemoGetIntialProps.getInitialProps = async (ctx: NextPageContext) 
     
