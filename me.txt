@@ -368,4 +368,9 @@ Thuật ngữ Authentication và Authorization
         npm install --save isomorphic-fetch es6-promise
         _app.tsx: MyApp.getInitialProps = async (appContext: AppContext)
         orther:   DemoGetIntialProps.getInitialProps = async (ctx: NextPageContext) 
+Thu thập dữ liệu từ Form Login
+    javascript:
+        debugger;
+        -> Closure: 
+            key: "email"
     
