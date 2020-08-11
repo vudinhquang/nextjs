@@ -348,4 +348,7 @@ Xây dựng trang Create
             "description": "export ~ from"
         }
 Xây dựng trang Detail
+Xây dựng trang liên quan tới User
+    Trang user Detail hay trang đổi mật khẩu thì url không cần phải truyền id mà id này sẽ được lưu trong cookie 
+    Nếu cookie không tồn tại thì đẩy về trang home 
     
