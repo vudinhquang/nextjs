@@ -374,4 +374,8 @@ Thu thập dữ liệu từ Form Login
         -> Closure: 
             key: "email"
 Gọi API Login phía Client
+Custom API phía Server bằng NextJs
+    Giấu đi phần Endpoint(/member/login.php)
+    SetCookie phía Server
+    Redirect phía Server(Không dùng router.push)
     

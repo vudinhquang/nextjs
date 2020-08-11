@@ -24,8 +24,7 @@ export default function Login() {
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        console.log(formData);
-        api.callJson('member/login.php', formData, 'POST')
+        api.callJson('member/login.php', { data: formData, method: 'POST' })
             .then(data => {
                 console.log(data);
             });

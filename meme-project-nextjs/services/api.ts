@@ -7,7 +7,7 @@ type ConfigType = {
 }
 
 const api = {
-    callJson: async (url: string, data: Record<string, any>, method = "GET") => {
+    callJson: async (url: string, { data, method = 'GET' }: ConfigType = {}) => {
         const URL = `${BASE_URL}/${url}`;
         const config = {
             method,
@@ -18,6 +18,7 @@ const api = {
         }
         return fetch(URL, config).then(res => res.json())
     },
+    /*
     callWithAuth: async (url: string, data: Record<string, any>, method = "GET") => {
         const URL = `${BASE_URL}/${url}`;
         const config = {
@@ -30,6 +31,7 @@ const api = {
         }
         return fetch(URL, config).then(res => res.json())
     }
+    */
 }
 
 export default api;
