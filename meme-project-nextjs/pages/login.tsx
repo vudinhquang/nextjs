@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from 'next/router'
 import fetch from "isomorphic-fetch";
 // import Cookies from "js-cookie";
@@ -18,6 +18,14 @@ const initFormData = {
 export default function Login() {
     const router = useRouter();
     const [formData, setFormData] = useState<FormLogin>(initFormData);
+    const errorString = router.query.error;
+
+    useEffect(() => {
+        if(errorString) {
+            alert("Dang nhap that bai"); // Su dung thu vien ho tro notification o ben ngoai
+            window.history.pushState({}, document.title, "/login");
+        }
+    }, [errorString]);
 
     const handleOnChange = (key: string) => (evt: any) => {
         const value = evt.target.value;
@@ -54,6 +62,16 @@ export default function Login() {
         })
     }
 
+    function handleSubmitForm(e) {
+        e.preventDefault();   
+        const formElement = e.target;
+        
+        // B1: Handle Validation form data
+
+        // B2: Goi ham submit cua Form
+        formElement.submit();
+    }
+
     return (
         <div className="ass1-login">
             <div className="ass1-login__logo">
@@ -63,7 +81,7 @@ export default function Login() {
             <p>Đăng nhập</p>
             <div className="ass1-login__form">
                 {/* <form action="#" onSubmit={handleSubmit}> */}
-                <form action="/api/login" method="POST">
+                <form action="/api/login" method="POST" onSubmit={handleSubmitForm}>
                 <input 
                     // value={formData.email}
                     // onChange={handleOnChange('email')}

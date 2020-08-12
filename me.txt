@@ -391,4 +391,19 @@ Kỹ thuật Redirect phía Client và Server
     http request status 302: Redirect sang trang khác
         res.statusCode = 302;
         res.setHeader('Location', '/');
+Xử lí Error cho chức năng Login phía Server
+    1. Login -> /api/login -> Thanh cong 
+        -> Redirect sang trang home page
+        -> Lay duoc token trong _app.tsx
+            (Server side render get thong tin user trong app)
+    2. Login -> /api/login -> that bai
+        -> Redirect quay tro lai /login/error=~
+        2.1 Lỗi nhập liệu form(Nên xử lý phía Client)
+            Xử lý trước khi Submit
+        2.2 Lỗi đăng nhập thất bại(Email sai, hay do password sai)
+            Email hoặc mật khẩu không hợp lệ
+            Su dung thu vien ho tro notification o ben ngoai để hiển thị thông báo
+    Sau khi hiển thị thông báo lỗi xong /login?error=failed -> /login nhưng không reload lại trang 
+        how to remove URL params without refresh page 
+        window.history.pushState({}, document.title, "/login");
     

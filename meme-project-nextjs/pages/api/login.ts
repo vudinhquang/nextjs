@@ -30,7 +30,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       res.json(resHeroku);
     } else {
       res.statusCode = 302;
-      res.setHeader('Location', '/login?error=dangnhapkothanhcong')
+      res.setHeader('Location', '/login?error=failed')
       res.json(resHeroku);
     }
   } catch (error) {
