@@ -19,12 +19,20 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const resHeroku = await api.callJson('member/login.php', { data, method });
     const currentTime = new Date();
     const nextYear = new Date(currentTime.getFullYear() + 1, currentTime.getMonth());
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'application/json');
-    res.setHeader('X-Token', 'value sdsfhfh sa');
-    res.setHeader('Set-Cookie', `token=${resHeroku.token}; expires=${nextYear.toUTCString()}; Path=/`);
-
-    res.json(resHeroku);
+    
+    if(resHeroku.status === 200) {
+      res.statusCode = 302;
+      res.setHeader('Location', '/');
+      res.setHeader('Content-Type', 'application/json');
+      res.setHeader('X-Token', 'value sdsfhfh sa');
+      res.setHeader('Set-Cookie', `token=${resHeroku.token}; expires=${nextYear.toUTCString()}; Path=/`);
+  
+      res.json(resHeroku);
+    } else {
+      res.statusCode = 302;
+      res.setHeader('Location', '/login?error=dangnhapkothanhcong')
+      res.json(resHeroku);
+    }
   } catch (error) {
     res.statusCode = 200;
     res.json({

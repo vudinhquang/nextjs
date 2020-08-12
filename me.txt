@@ -385,4 +385,10 @@ Các kỹ thuật với Cookie phía Client và Server
     js cookie npm: npm i js-cookie
     Next.js API route support: https://nextjs.org/docs/api-routes/introduction
     Cookie có thể được set phía browser hoặc phía server
+Kỹ thuật Redirect phía Client và Server
+    res.json(resHeroku); 
+        res.json() cũng là câu lệnh để kết thúc request
+    http request status 302: Redirect sang trang khác
+        res.statusCode = 302;
+        res.setHeader('Location', '/');
     
