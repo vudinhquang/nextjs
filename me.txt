@@ -379,4 +379,10 @@ Custom API phía Server bằng NextJs
     SetCookie phía Server
     Redirect phía Server(Không dùng router.push)
 Gọi API Login phía Server
+Các kỹ thuật với Cookie phía Client và Server
+    Local Storage: Thì chỉ có trình duyệt mới có thể truy xuất vào được
+    Cookies: Vừa truy xuất bằng javascript ở trong trình duyệt và vừa gửi nó lên request phía server
+    js cookie npm: npm i js-cookie
+    Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+    Cookie có thể được set phía browser hoặc phía server
     

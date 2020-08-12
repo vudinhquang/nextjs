@@ -1,8 +1,10 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { NextApiRequest, NextApiResponse} from "next"; 
+
 import api from "../../services/api";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+  console.log(req.headers.cookie);
   const method = req.method;
   if(method !== "POST") {
     res.statusCode = 200;
@@ -13,10 +15,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const data = req.body;
-  console.log("data api login", data);
   try {
-    const resHeroku = await api.callJson('member/login.php', { data, method })
+    const resHeroku = await api.callJson('member/login.php', { data, method });
+    const currentTime = new Date();
+    const nextYear = new Date(currentTime.getFullYear() + 1, currentTime.getMonth());
     res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('X-Token', 'value sdsfhfh sa');
+    res.setHeader('Set-Cookie', `token=${resHeroku.token}; expires=${nextYear.toUTCString()}; Path=/`);
+
     res.json(resHeroku);
   } catch (error) {
     res.statusCode = 200;

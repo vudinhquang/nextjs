@@ -1,5 +1,6 @@
 import { useState } from "react";
 import fetch from "isomorphic-fetch";
+// import Cookies from "js-cookie";
 
 import api from "../services/api";
 
@@ -33,18 +34,20 @@ export default function Login() {
             });
         */
 
-       const body = JSON.stringify(formData);
-       const method = "POST"
-       fetch('/api/login', {
-            body,
-            method,
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log("data = ", data);
+        const body = JSON.stringify(formData);
+        const method = "POST";
+
+        fetch('/api/login', {
+                body,
+                method,
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log("data = ", data);
+                // Cookies.set("token", data.token, { expires: 30 });
         })
     }
 
