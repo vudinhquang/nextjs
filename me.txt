@@ -406,4 +406,10 @@ Xử lí Error cho chức năng Login phía Server
     Sau khi hiển thị thông báo lỗi xong /login?error=failed -> /login nhưng không reload lại trang 
         how to remove URL params without refresh page 
         window.history.pushState({}, document.title, "/login");
+Lấy Token từ Custom App và Master Layout
+    Parse cookie từ string sang object
+        npm install cookie(yarn add cookie)
+        cookie.parse(cookieStr)
+    Decode jwt by javascript
+        parseJwt() -> Trong trường hợp cố tình thay đổi giá trị token -> không thể parse được(lỗi)
     

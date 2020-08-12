@@ -4,12 +4,14 @@ import { AppContext, AppProps } from "next/app";
 import { useMemo } from "react";
 import fetch from "isomorphic-fetch";
 import es6Promise from "es6-promise";
+import cookie from "cookie";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/css/style.css";
 
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
+import { parseJwt } from '../helpers';
 
 es6Promise.polyfill();
 
@@ -63,7 +65,10 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 
 MyApp.getInitialProps = async (appContext: AppContext) => {
   const appProps = await App.getInitialProps(appContext);
-
+  const cookieStr = appContext.ctx.req.headers.cookie;
+  const token = cookie.parse(cookieStr).token;
+  const objUser = parseJwt(token);
+  
   return {
     pageProps: {
       ...appProps.pageProps

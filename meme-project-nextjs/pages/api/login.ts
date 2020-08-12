@@ -24,7 +24,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       res.statusCode = 302;
       res.setHeader('Location', '/');
       res.setHeader('Content-Type', 'application/json');
-      res.setHeader('X-Token', 'value sdsfhfh sa');
       res.setHeader('Set-Cookie', `token=${resHeroku.token}; expires=${nextYear.toUTCString()}; Path=/`);
   
       res.json(resHeroku);
