@@ -412,4 +412,18 @@ Lấy Token từ Custom App và Master Layout
         cookie.parse(cookieStr)
     Decode jwt by javascript
         parseJwt() -> Trong trường hợp cố tình thay đổi giá trị token -> không thể parse được(lỗi)
+Gọi API Get User Info dựa vào token
+    atob is not defined
+        yarn add atob
+    Could not find a declaration file for module 'cookie'. 
+        'c:/xampp/htdocs/nextjs/meme-project-nextjs/node_modules/cookie/index.js' implicitly has an 'any' type.
+        Try `npm install @types/cookie` if it exists or add a new declaration (.d.ts) file containing `declare module 'cookie';
+    yarn add --dev @types/cookie
+    yarn add --dev @types/atob
+    yarn add --dev @types/js-cookie
+        Giúp cho việc nhắc lệnh tốt hơn 
+    Sau khi có id -> gọi api để lấy thông tin của user
+        {{base_url}}/member/member.php?userid=7
+        Đây là api public nên không cần token 
+    TypeError: argument str must be a string
     

@@ -1,8 +1,7 @@
 import Head from 'next/head'
 import App from "next/app";
 import { AppContext, AppProps } from "next/app";
-import { useMemo } from "react";
-import fetch from "isomorphic-fetch";
+import { useMemo, useEffect } from "react";
 import es6Promise from "es6-promise";
 import cookie from "cookie";
 
@@ -12,11 +11,16 @@ import "../assets/css/style.css";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { parseJwt } from '../helpers';
+import userService from '../services/userService';
 
 es6Promise.polyfill();
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   const pathname = router.pathname;
+
+  useEffect(() => {
+    console.log("pageProps =", pageProps);
+  }, [])
 
   const hiddenFooter = useMemo(() => {
     const excluded = [ '/', '/posts/[postId]' ];
@@ -65,13 +69,20 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 
 MyApp.getInitialProps = async (appContext: AppContext) => {
   const appProps = await App.getInitialProps(appContext);
-  const cookieStr = appContext.ctx.req.headers.cookie;
+  const cookieStr = appContext.ctx.req.headers.cookie || '';
   const token = cookie.parse(cookieStr).token;
-  const objUser = parseJwt(token);
-  
+  const userToken = parseJwt(token);
+  let userRes = null;
+
+  if(userToken && userToken.id) {
+    // Co ton tai user id -> Call API lay thong tin userId
+    userRes = await userService.getUserById(userToken.id);
+  }
+
   return {
     pageProps: {
-      ...appProps.pageProps
+      ...appProps.pageProps,
+      userInfo: userRes && userRes.user
     }
   }
 }
