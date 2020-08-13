@@ -12,15 +12,19 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { parseJwt } from '../helpers';
 import userService from '../services/userService';
+import { useGlobalState } from "../state";
 
 es6Promise.polyfill();
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   const pathname = router.pathname;
+  const [currentUser, setCurrentUser] = useGlobalState("currentUser");
 
-  useEffect(() => {
-    console.log("pageProps =", pageProps);
-  }, [])
+  useMemo(() => {
+    console.log("Chay mot lan duy nhat phia server side");
+    // Chay 1 lan duy nhat khoi tao global state
+    setCurrentUser(pageProps.userInfo);
+  }, []);
 
   const hiddenFooter = useMemo(() => {
     const excluded = [ '/', '/posts/[postId]' ];
@@ -68,15 +72,19 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 }
 
 MyApp.getInitialProps = async (appContext: AppContext) => {
-  const appProps = await App.getInitialProps(appContext);
-  const cookieStr = appContext.ctx.req.headers.cookie || '';
-  const token = cookie.parse(cookieStr).token;
-  const userToken = parseJwt(token);
   let userRes = null;
+  const appProps = await App.getInitialProps(appContext);
 
-  if(userToken && userToken.id) {
-    // Co ton tai user id -> Call API lay thong tin userId
-    userRes = await userService.getUserById(userToken.id);
+  if(typeof window === "undefined") {
+    // SSR
+    const cookieStr = appContext.ctx.req.headers.cookie || '';
+    const token = cookie.parse(cookieStr).token;
+    const userToken = parseJwt(token);
+    
+    if(userToken && userToken.id) {
+      // Co ton tai user id -> Call API lay thong tin userId
+      userRes = await userService.getUserById(userToken.id);
+    }
   }
 
   return {

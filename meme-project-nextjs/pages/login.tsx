@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/router'
 import fetch from "isomorphic-fetch";
-// import Cookies from "js-cookie";
 
-import api from "../services/api";
+import { useGlobalState } from "../state";
 
 interface FormLogin {
     email: string;
@@ -15,10 +14,15 @@ const initFormData = {
     password: ''
 }
 
-export default function Login() {
+export default function Login(props) {
     const router = useRouter();
     const [formData, setFormData] = useState<FormLogin>(initFormData);
     const errorString = router.query.error;
+    const [userInfo] = useGlobalState("currentUser");
+
+    useEffect(() => {
+        console.log("userInfo Login Page", userInfo);
+    }, [userInfo])
 
     useEffect(() => {
         if(errorString) {

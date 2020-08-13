@@ -20,7 +20,8 @@
     "next-images": "^1.4.1",
     "node-sass": "^4.14.1",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-hooks-global-state": "^1.0.1"
   },
   "devDependencies": {
     "@types/atob": "^2.1.2",

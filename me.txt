@@ -426,4 +426,14 @@ Gọi API Get User Info dựa vào token
         {{base_url}}/member/member.php?userid=7
         Đây là api public nên không cần token 
     TypeError: argument str must be a string
+Cách sử dụng React Hooks Global State
+    1. getInitialProps: Chạy cả Server và Client
+        1.1 Trong lần load đầu tiên -> Chạy ở phía server(typeof window === "undefined")
+            Khi truy cập trực tiếp vào đường dẫn /login -> thì đó là Server Side Render
+        1.2 Trong lần load tiếp theo(thông qua Link của next/link) -> trở thành client side 
+            Không truy xuất vào login 1 cách trực tiếp mà truy xuất vào login bằng thẻ Link(từ trang home)
+            -> Đó là Client Side Render
+    Quản lý state ở cấp global ở phía Client   
+        yarn add react hooks global state 
+        useMemo() Chay 1 lan duy nhat khoi tao global state
     
