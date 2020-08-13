@@ -440,4 +440,6 @@ Cách sử dụng React Hooks Global State
     2. Ứng dụng customhook để ngăn chặn user truy cập vào URL nào đó
     Login -> chỉ được phép truy cập nếu chưa đăng nhập
     -> Xây dựng 1 Custom Hooks dùng cho login 
+Tối ưu mã nguồn cho chức năng Login
+    Thông tin token ko nên lấy ở App  của trình duyệt mà lấy từ global state giống như của thông tin user 
     

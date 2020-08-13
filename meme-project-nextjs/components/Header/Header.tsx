@@ -97,9 +97,11 @@ export default function Header() {
                             </label>
                         </form>
                     </div>
-                    <a href="#" className="ass1-header__btn-upload ass1-btn">
-                        <i className="icon-Upvote" /> Upload
-                    </a>
+                    <Link href="/posts/create">
+                        <a className="ass1-header__btn-upload ass1-btn">
+                            <i className="icon-Upvote" /> Upload
+                        </a>
+                    </Link>
 
                     {
                         userInfo 

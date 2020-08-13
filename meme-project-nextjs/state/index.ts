@@ -13,10 +13,12 @@ type TypeCurrentuser = {
 }
 
 type TypeInitState = {
+    token?: string;
     currentUser: TypeCurrentuser | null;
 }
 
 const initialState: TypeInitState = {
+    token: '',
     currentUser: null,
 };
 
