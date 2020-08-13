@@ -452,4 +452,7 @@ Chức năng Logout và Optional Chaining
         if(typeof window === "undefined" && userToken?.id && userToken?.email)
         (ctx?: NextPageContext) Có thể truyền hoặc không
 Thu thâp dữ liệu từ Form Register
+Xử lí Error cho chức năng Register phía Client
+    Validate email
+        Regular expression for email javascript
     

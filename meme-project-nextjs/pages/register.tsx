@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { handleError } from "../helpers";
 
 const initRegisterData = {
     fullname: {
@@ -23,10 +24,9 @@ export default function Register() {
     const [registerData, setRegisterData] = useState(initRegisterData);
 
     const onChangeData = (key: string) => (e: any) => {   
-        let error = ''; 
         const value = e.target.value;
-        
-        // Handle error
+        const password = registerData.password.value
+        const error = handleError(key, value, password);
 
         setRegisterData({
             ...registerData,
