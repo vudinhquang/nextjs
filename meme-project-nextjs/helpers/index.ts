@@ -28,7 +28,7 @@ export const getTokenSSRAndCSS = (ctx?: NextPageContext): [string, UserToken | n
 
     if(typeof window === "undefined") {
         // SSR
-        const cookieStr = ctx.req.headers.cookie || '';
+        const cookieStr = ctx?.req?.headers?.cookie || '';
         token = cookie.parse(cookieStr).token;
         userToken = parseJwt(token);
     } else {

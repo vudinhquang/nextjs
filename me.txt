@@ -442,4 +442,13 @@ Cách sử dụng React Hooks Global State
     -> Xây dựng 1 Custom Hooks dùng cho login 
 Tối ưu mã nguồn cho chức năng Login
     Thông tin token ko nên lấy ở App  của trình duyệt mà lấy từ global state giống như của thông tin user 
+Chức năng Logout và Optional Chaining
+    Clear cookie ở phía trình duyệt 
+    Reset lại data được lưu ở trong global state 
+    cookie: Dùng để parse cookie ra object
+    js-cookie: Dùng để get, remove ở phía trình duyệt
+    Optional Chaining javascript: userToken?.id && userToken?.email
+        -> Không cần kiểm tra userToken có tồn tại hay không
+        if(typeof window === "undefined" && userToken?.id && userToken?.email)
+        (ctx?: NextPageContext) Có thể truyền hoặc không
     

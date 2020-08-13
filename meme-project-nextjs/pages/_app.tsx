@@ -77,11 +77,8 @@ MyApp.getInitialProps = async (appContext: AppContext) => {
 
   const [token, userToken] = getTokenSSRAndCSS(appContext.ctx);
 
-  if(typeof window === "undefined" && userToken) {
-    if(userToken.id && userToken.email) {
-      // Co ton tai user id -> Call API lay thong tin userId
-      userRes = await userService.getUserById(userToken.id);
-    }
+  if(typeof window === "undefined" && userToken?.id && userToken?.email) {
+    userRes = await userService.getUserById(userToken.id);
   }
 
   return {
