@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import fetch from "isomorphic-fetch";
 
 import { useGlobalState } from "../state";
+import { useNotAuthen } from "../helpers/useAuthen";
 
 interface FormLogin {
     email: string;
@@ -15,14 +16,14 @@ const initFormData = {
 }
 
 export default function Login(props) {
+    useNotAuthen();
     const router = useRouter();
     const [formData, setFormData] = useState<FormLogin>(initFormData);
     const errorString = router.query.error;
     const [userInfo] = useGlobalState("currentUser");
 
-    useEffect(() => {
-        console.log("userInfo Login Page", userInfo);
-    }, [userInfo])
+    // useEffect(() => {
+    // }, [userInfo])
 
     useEffect(() => {
         if(errorString) {

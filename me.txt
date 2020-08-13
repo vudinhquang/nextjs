@@ -436,4 +436,8 @@ Cách sử dụng React Hooks Global State
     Quản lý state ở cấp global ở phía Client   
         yarn add react hooks global state 
         useMemo() Chay 1 lan duy nhat khoi tao global state
+Ứng dụng Hooks để xây dựng Navigation Guard
+    2. Ứng dụng customhook để ngăn chặn user truy cập vào URL nào đó
+    Login -> chỉ được phép truy cập nếu chưa đăng nhập
+    -> Xây dựng 1 Custom Hooks dùng cho login 
     

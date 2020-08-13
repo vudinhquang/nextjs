@@ -21,7 +21,6 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   const [currentUser, setCurrentUser] = useGlobalState("currentUser");
 
   useMemo(() => {
-    console.log("Chay mot lan duy nhat phia server side");
     // Chay 1 lan duy nhat khoi tao global state
     setCurrentUser(pageProps.userInfo);
   }, []);
