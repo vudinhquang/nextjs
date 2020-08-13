@@ -451,4 +451,5 @@ Chức năng Logout và Optional Chaining
         -> Không cần kiểm tra userToken có tồn tại hay không
         if(typeof window === "undefined" && userToken?.id && userToken?.email)
         (ctx?: NextPageContext) Có thể truyền hoặc không
+Thu thâp dữ liệu từ Form Register
     

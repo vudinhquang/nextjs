@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/router'
 import fetch from "isomorphic-fetch";
+import Link from "next/link";
 
 import { useGlobalState } from "../state";
 import { useNotAuthen } from "../helpers/useAuthen";
@@ -98,7 +99,9 @@ export default function Login(props) {
                     name="password"
                     type="password" className="form-control" placeholder="Mật khẩu" required />
                 <div className="ass1-login__send">
-                    <a href="/register">Đăng ký một tài khoản</a>
+                    <Link href="/register">
+                        <a>Đăng ký một tài khoản</a>
+                    </Link>
                     <button type="submit" className="ass1-btn">Đăng nhập</button>
                 </div>
                 </form>

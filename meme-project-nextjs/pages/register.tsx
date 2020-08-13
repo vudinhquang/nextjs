@@ -1,4 +1,42 @@
+import { useState } from "react"
+
+const initRegisterData = {
+    fullname: {
+        value: '',
+        error: '',
+    },
+    email: {
+        value: '',
+        error: '',
+    },
+    password: {
+        value: '',
+        error: ''
+    },
+    repassword: {
+        value: '',
+        error: ''
+    }
+}
+
 export default function Register() {
+    const [registerData, setRegisterData] = useState(initRegisterData);
+
+    const onChangeData = (key: string) => (e: any) => {   
+        let error = ''; 
+        const value = e.target.value;
+        
+        // Handle error
+
+        setRegisterData({
+            ...registerData,
+            [key]: {
+                value,
+                error
+            }
+        });
+    }
+
     return (
         <div className="ass1-login">
             <div className="ass1-login__logo">
@@ -8,14 +46,42 @@ export default function Register() {
             <p>Đăng ký một tài khoản</p>
             <div className="ass1-login__form">
                 <form action="#">
-                <input type="text" className="form-control" placeholder="Tên hiển thị" required />
-                <input type="email" className="form-control" placeholder="Email" required />
-                <input type="password" className="form-control" placeholder="Mật khẩu" required />
-                <input type="password" className="form-control" placeholder="Nhập lại mật khẩu" required />
-                <div className="ass1-login__send">
-                    <a href="dang-nhap.html">Đăng nhập</a>
-                    <button type="submit" className="ass1-btn">Đăng ký</button>
-                </div>
+                    <div className="form-group">
+                        <input
+                            value={registerData.fullname.value} 
+                            onChange={onChangeData('fullname')}
+                            type="text" className="form-control" placeholder="Tên hiển thị" />
+                        { registerData.fullname.error && 
+                            <small className="form-text text-danger">{registerData.fullname.error}</small> }
+                    </div>
+                    <div className="form-group">
+                        <input
+                            value={registerData.email.value} 
+                            onChange={onChangeData('email')}
+                            type="email" className="form-control" placeholder="Email" />
+                        { registerData.email.error && 
+                            <small className="form-text text-danger">{registerData.email.error}</small> }
+                    </div>
+                    <div className="form-group">
+                        <input
+                            value={registerData.password.value} 
+                            onChange={onChangeData('password')}
+                            type="password" className="form-control" placeholder="Mật khẩu" />
+                        { registerData.password.error && 
+                            <small className="form-text text-danger">{registerData.password.error}</small> }
+                    </div>
+                    <div className="form-group">
+                        <input
+                            value={registerData.repassword.value} 
+                            onChange={onChangeData('repassword')}
+                            type="password" className="form-control" placeholder="Nhập lại mật khẩu" />
+                        { registerData.repassword.error && 
+                            <small className="form-text text-danger">{registerData.repassword.error}</small> }
+                    </div>
+                    <div className="ass1-login__send">
+                        <a href="dang-nhap.html">Đăng nhập</a>
+                        <button type="submit" className="ass1-btn">Đăng ký</button>
+                    </div>
                 </form>
             </div>
             </div>
