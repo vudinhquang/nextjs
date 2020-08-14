@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
-import { useGlobalState } from "../../state";
 
+import { useGlobalState } from "../../state";
 import "./header.scss";
 
 export default function Header() {
@@ -24,9 +24,9 @@ export default function Header() {
         <header>
             <div className="ass1-header">
                 <div className="container">
-                    <a href="index.html" className="ass1-logo">
-                        Meme Project
-                    </a>
+                    <Link href="/">
+                        <a className="ass1-logo">Project Meme</a>
+                    </Link>
                     <nav>
                         <ul className="ass1-header__menu">
                             <li>

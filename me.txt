@@ -482,4 +482,13 @@ Gọi API lấy danh sách bài viết phía Server
         const ctx = context as NextPageContext;
     Promise all: await chung 1 lúc để tiết kiệm được thời gian
         const [listPostsRes, userPostsRes ] = await Promise.all([listPostsPos, userPostsPos]);
+Render dữ liệu Homepage và một số lưu ý
+    map
+        listPosts.map(post => <PostItem key={post.PID} post={post}/>)
+    Dynamic routes
+        <Link href="/users/[userId]" as={`/users/${post.USERID}`}>
+    Xử lý thời gian: moment.js, day.js
+        moment.js không dùng hết chức năng nhưng phải import hết 
+        day.js dùng gì thì import cái đó 
+        -> yarn add dayjs
     
