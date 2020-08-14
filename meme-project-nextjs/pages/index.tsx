@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps, NextPageContext } from 'next'
 import { InferGetServerSidePropsType } from 'next'
 
 import { PostListItem } from "../components/PostListItem";
 import { HomeSidebar } from "../components/HomeSidebar";
+import postService from "../services/postService";
+import { getTokenSSRAndCSS } from "../helpers";
 
 
 export type PostType = {
@@ -47,21 +49,18 @@ const Home: HomeProps = ({ listPosts, userPosts }) => {
 }
 
 export const getServerSideProps: GetServerSideProps<HomeDataProps> = async (context) => {
+  const ctx = context as NextPageContext;
+  const [token, userToken] = getTokenSSRAndCSS(ctx);
+  const userid = userToken?.id;
+
+  const listPostsPos = postService.getPostsPaging();
+  const userPostsPos = postService.getPostsByUserId({ token, userid });
+
+  const [listPostsRes, userPostsRes ] = await Promise.all([listPostsPos, userPostsPos]);
+
   const props = {
-    listPosts: [
-      {
-        "USERID": "192",
-        "profilepicture": "",
-        "fullname": "asS",
-        "PID": "122",
-        "url_image": "http://api-meme-zendvn-01.herokuapp.com/public/post/192/tải xuống.jpg",
-        "post_content": "ffbdfb",
-        "time_added": "2020-08-10 22:53:14",
-        "status": "1",
-        "count": null
-      }
-    ],
-    userPosts: []
+    listPosts: listPostsRes?.posts || [],
+    userPosts: userPostsRes?.posts || [],
   }
 
   return {

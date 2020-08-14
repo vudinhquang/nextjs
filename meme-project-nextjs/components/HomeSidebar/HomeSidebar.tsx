@@ -6,7 +6,6 @@ type PropsType = {
 }
 
 const HomeSidebar: React.FC<PropsType> = ({ userPosts }) => {
-    console.log("userPosts", userPosts);
     return (
         <aside className="ass1-aside">
             <div className="ass1-content-head__t">

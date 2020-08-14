@@ -477,4 +477,9 @@ Cải thiện UI/UX với Loading state
 Sử dụng Typescript trong Homepage
     post/getListPagination.php?pagesize=3&currPage=1 Lấy danh sách bài viết lớn nhất, không cần gửi theo token
     /post/getListPostUserID.php?userid=2 Cần phải gửi theo token 
+Gọi API lấy danh sách bài viết phía Server
+    Ép kiểu dữ liệu
+        const ctx = context as NextPageContext;
+    Promise all: await chung 1 lúc để tiết kiệm được thời gian
+        const [listPostsRes, userPostsRes ] = await Promise.all([listPostsPos, userPostsPos]);
     
