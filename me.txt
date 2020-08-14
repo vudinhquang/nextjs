@@ -491,4 +491,17 @@ Render dữ liệu Homepage và một số lưu ý
         moment.js không dùng hết chức năng nhưng phải import hết 
         day.js dùng gì thì import cái đó 
         -> yarn add dayjs
+Chức năng Pagination (Load More Posts)
+    Khi nhấn vào nút Load More thì thực hiện gọi đến API để lấy ra dữ liệu của trang tiếp theo 
+    Sau đó thực hiện join dữ liệu lấy được khi gọi API với listPosts hiện tại 
+    Khởi tạo 1 state cho PostListItem
+        const [currPage, setCurrPage] = useState(1);
+        const [listPosts, setListPosts] = useState(props.listPosts);
+    Tăng giá trị state của currPage sau mỗi lần nhấn nút Load More
+        setCurrPage(prev => prev + 1);
+    Join
+        setListPosts([
+            ...listPosts,
+            ...newPosts
+        ])
     
