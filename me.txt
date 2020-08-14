@@ -471,3 +471,10 @@ Cải thiện UI/UX với Loading state
     if(loading === true) return;
         Trong trường hợp nhấn Enter nhiều lần, đang loading có nghĩa là đang chờ kết quả nên không làm gì cả
     
+=============================================================================================
+                            Nhóm chức năng User và Post
+                            
+Sử dụng Typescript trong Homepage
+    post/getListPagination.php?pagesize=3&currPage=1 Lấy danh sách bài viết lớn nhất, không cần gửi theo token
+    /post/getListPostUserID.php?userid=2 Cần phải gửi theo token 
+    
