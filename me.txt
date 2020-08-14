@@ -455,4 +455,6 @@ Thu thâp dữ liệu từ Form Register
 Xử lí Error cho chức năng Register phía Client
     Validate email
         Regular expression for email javascript
+Gọi API Register phía Client
+    Handle chức năng đăng ký và gọi API 
     

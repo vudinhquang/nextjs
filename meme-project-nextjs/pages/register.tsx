@@ -1,5 +1,11 @@
-import { useState } from "react"
+import { useState, useMemo } from "react"
+import Link from "next/link";
+import Cookies from "js-cookie";
+
 import { handleError } from "../helpers";
+import userService from "../services/userService";
+import { useGlobalState } from "../state";
+import { useNotAuthen } from "../helpers/useAuthen";
 
 const initRegisterData = {
     fullname: {
@@ -21,7 +27,18 @@ const initRegisterData = {
 }
 
 export default function Register() {
+    useNotAuthen();
     const [registerData, setRegisterData] = useState(initRegisterData);
+    const [, setToken] = useGlobalState("token");
+    const [, setUserInfo] = useGlobalState("currentUser");
+
+    const isValidate = useMemo((): boolean => {
+        for(let key in registerData) {
+            const error = registerData[key].error;
+            if(error !== '') return false;
+        }
+        return true;
+    }, [registerData]);
 
     const onChangeData = (key: string) => (e: any) => {   
         const value = e.target.value;
@@ -37,6 +54,38 @@ export default function Register() {
         });
     }
 
+    const handleRegister = (e) => {
+        e.preventDefault();
+        if(!isValidate) {
+            alert("Du lieu nhap vao khong hop le!");
+            return;
+        }
+
+        const email = registerData.email.value;
+        const fullname = registerData.fullname.value;
+        const password = registerData.password.value;
+        const repassword = registerData.repassword.value;
+
+        const data = {
+            email,
+            fullname,
+            password,
+            repassword,
+        }
+
+        userService
+            .register(data)
+            .then(res => {
+                if(res.status === 200) {
+                    setToken(res.token);
+                    setUserInfo(res.user);
+                    Cookies.set("token", res.token, { expires: 30 * 12 });
+                } else {
+                    alert(res.error);
+                }
+            })
+    }
+
     return (
         <div className="ass1-login">
             <div className="ass1-login__logo">
@@ -45,7 +94,7 @@ export default function Register() {
             <div className="ass1-login__content">
             <p>Đăng ký một tài khoản</p>
             <div className="ass1-login__form">
-                <form action="#">
+                <form action="#" onSubmit={handleRegister}>
                     <div className="form-group">
                         <input
                             value={registerData.fullname.value} 
@@ -79,7 +128,9 @@ export default function Register() {
                             <small className="form-text text-danger">{registerData.repassword.error}</small> }
                     </div>
                     <div className="ass1-login__send">
-                        <a href="dang-nhap.html">Đăng nhập</a>
+                        <Link href="/login">
+                            <a>Đăng nhập</a>
+                        </Link>
                         <button type="submit" className="ass1-btn">Đăng ký</button>
                     </div>
                 </form>
