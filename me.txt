@@ -457,4 +457,17 @@ Xử lí Error cho chức năng Register phía Client
         Regular expression for email javascript
 Gọi API Register phía Client
     Handle chức năng đăng ký và gọi API 
+Cải thiện UI/UX với Loading state
+    Khi người dùng đang gửi Request lên server thì thể hiện trang đang loading 
+    Loading cục bộ tại Button của trang login và Register
+    loading.io 
+    State loading trước khi gọi API được set là true 
+    Trang login gọi API xử lý ở phía server, sau khi xử lý xong thì thực hiện load lại trang -> loading tự động 
+        được set về false
+    Trang Register xử lý gọi API ở phía client -> sau khi gọi API xong chủ động set loading về false
+        .finally(() => {
+            setLoading(false);
+        })
+    if(loading === true) return;
+        Trong trường hợp nhấn Enter nhiều lần, đang loading có nghĩa là đang chờ kết quả nên không làm gì cả
     

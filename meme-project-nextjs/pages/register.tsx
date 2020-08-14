@@ -6,6 +6,7 @@ import { handleError } from "../helpers";
 import userService from "../services/userService";
 import { useGlobalState } from "../state";
 import { useNotAuthen } from "../helpers/useAuthen";
+import { Button } from "../components/Button";
 
 const initRegisterData = {
     fullname: {
@@ -28,6 +29,7 @@ const initRegisterData = {
 
 export default function Register() {
     useNotAuthen();
+    const [loading, setLoading] = useState(false);
     const [registerData, setRegisterData] = useState(initRegisterData);
     const [, setToken] = useGlobalState("token");
     const [, setUserInfo] = useGlobalState("currentUser");
@@ -56,6 +58,7 @@ export default function Register() {
 
     const handleRegister = (e) => {
         e.preventDefault();
+        if(loading === true) return;
         if(!isValidate) {
             alert("Du lieu nhap vao khong hop le!");
             return;
@@ -72,7 +75,7 @@ export default function Register() {
             password,
             repassword,
         }
-
+        setLoading(true);
         userService
             .register(data)
             .then(res => {
@@ -83,6 +86,9 @@ export default function Register() {
                 } else {
                     alert(res.error);
                 }
+            })
+            .finally(() => {
+                setLoading(false);
             })
     }
 
@@ -131,7 +137,7 @@ export default function Register() {
                         <Link href="/login">
                             <a>Đăng nhập</a>
                         </Link>
-                        <button type="submit" className="ass1-btn">Đăng ký</button>
+                        <Button type="submit" className="ass1-btn" isLoading={loading}>Đăng ký</Button>
                     </div>
                 </form>
             </div>

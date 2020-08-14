@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import { useGlobalState } from "../state";
 import { useNotAuthen } from "../helpers/useAuthen";
+import { Button } from "../components/Button";
 
 interface FormLogin {
     email: string;
@@ -19,6 +20,7 @@ const initFormData = {
 export default function Login(props) {
     useNotAuthen();
     const router = useRouter();
+    const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState<FormLogin>(initFormData);
     const errorString = router.query.error;
     const [userInfo] = useGlobalState("currentUser");
@@ -69,11 +71,12 @@ export default function Login(props) {
     }
 
     function handleSubmitForm(e) {
-        e.preventDefault();   
+        e.preventDefault(); 
+        if(loading === true) return;  
         const formElement = e.target;
         
         // B1: Handle Validation form data
-
+        setLoading(true);
         // B2: Goi ham submit cua Form
         formElement.submit();
     }
@@ -102,7 +105,7 @@ export default function Login(props) {
                     <Link href="/register">
                         <a>Đăng ký một tài khoản</a>
                     </Link>
-                    <button type="submit" className="ass1-btn">Đăng nhập</button>
+                    <Button type="submit" className="ass1-btn" isLoading={loading}>Đăng nhập</Button>
                 </div>
                 </form>
             </div>
