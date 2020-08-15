@@ -524,4 +524,5 @@ Gọi API cho chức năng User Detail
     Trang userDetail thì bắt buộc đăng nhập thì mới vào được 
     /post/getListPostUserID.php?userid=2 phải có token thì mới gọi được 
     Vào trang user Detail của 1 user không tồn tại -> Redirect về trang home
+Render dữ liệu User Detail
     

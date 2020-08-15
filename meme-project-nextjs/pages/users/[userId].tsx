@@ -29,7 +29,10 @@ const UserDetail: NextPage<PropsType> = ({ userDetailInfo, userDetailPosts }) =>
 
     return (
         <div className="container">
-            <UserDetailInfo userDetailInfo={userDetailInfo} />
+            <UserDetailInfo 
+                postCount={userDetailPosts.length}
+                userDetailInfo={userDetailInfo} 
+            />
 
             <UserDetailPosts userDetailPosts={userDetailPosts} />
         </div>
