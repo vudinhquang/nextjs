@@ -12,13 +12,20 @@ type TypeCurrentuser = {
     permission: string;
 }
 
+type TypeCategory = {
+    id: number;
+    text: string;
+}
+
 type TypeInitState = {
     token?: string;
+    categories: TypeCategory[];
     currentUser: TypeCurrentuser | null;
 }
 
 const initialState: TypeInitState = {
     token: '',
+    categories: [],
     currentUser: null,
 };
 

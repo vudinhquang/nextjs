@@ -517,4 +517,7 @@ Highlight keywords cho chức năng tìm kiếm
             __html: renderContent()
         }}
     />
+Filter bài viết theo danh mục (Category)
+    Category nằm ở trong Header là phần dùng chung mà không thuộc 1 page cụ thể nào cả
+    -> gọi api ở _app
     
