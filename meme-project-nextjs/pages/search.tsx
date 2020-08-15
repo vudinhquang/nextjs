@@ -14,9 +14,8 @@ type PropsType = {
 
 const SearchPage: NextPage<PropsType> = ({ listPosts }) => {
     const router = useRouter();
-    const searchStr = router.query.q || '';
-    console.log("listPosts", listPosts);
-    
+    const searchStr = (router.query.q || '') as string;
+        
     useEffect(() => {
         if(!searchStr) {
             router.push('/');
@@ -37,6 +36,8 @@ const SearchPage: NextPage<PropsType> = ({ listPosts }) => {
                             key={post.PID} 
                             post={post} 
                             customClass="col-lg-6"
+                            isHightlight={true}
+                            query={searchStr}
                         />
                     ))
                 }

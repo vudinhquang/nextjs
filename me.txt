@@ -509,4 +509,12 @@ Xử lí Form cho chức năng Search Post
 Gọi API Search Post và Masonry Layout
     react masonry npm
     yarn add react-responsive-masonry
+Highlight keywords cho chức năng tìm kiếm
+    encodeURI()
+    decodeURI()
+    <p 
+        dangerouslySetInnerHTML={{
+            __html: renderContent()
+        }}
+    />
     
