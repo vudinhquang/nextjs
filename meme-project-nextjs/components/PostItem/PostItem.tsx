@@ -7,15 +7,20 @@ import { PostType } from "../../pages";
 
 type PropsType = {
     post: PostType;
+    customClass?: string;
 }
 
 dayjs.extend(relativeTime)
 
-const PostItem: React.FC<PropsType> = ({ post }) => {
+const PostItem: React.FC<PropsType> = ({ post, customClass }) => {
     const timeFormat = dayjs(post.time_added).locale(viLocal).fromNow();
+    let className = "ass1-section__item";
 
+    if(customClass) {
+        className = className + " " + customClass;
+    }
     return (
-        <div className="ass1-section__item">
+        <div className={className}>
             <div className="ass1-section">
                 <div className="ass1-section__head">
                     <Link href="/users/[userId]" as={`/users/${post.USERID}`}>

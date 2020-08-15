@@ -2583,3 +2583,7 @@ select.form-control:focus {
   width: 20px;
   height: 20px;
 }
+
+.col-lg-6 {
+  max-width: 100%;
+}

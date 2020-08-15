@@ -506,4 +506,7 @@ Chức năng Pagination (Load More Posts)
         ])
 Xử lí Form cho chức năng Search Post
     Nhập từ khóa tìm kiếm rồi nhấn Enter -> Redirect sang trang Search /search/q=~ 
+Gọi API Search Post và Masonry Layout
+    react masonry npm
+    yarn add react-responsive-masonry
     

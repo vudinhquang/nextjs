@@ -7,6 +7,7 @@ const postService = {
         const url = `/post/getListPagination.php?${params}`;
         return api.callJson(url);
     },
+
     getPostsByUserId: async({ userid, token }) => {
         if(!userid || !token) {
             return {
@@ -19,6 +20,10 @@ const postService = {
         return api.callJson(url, {
             token
         })
+    },
+
+    getPostSearch: async ({ query }) => {
+        return api.callJson(`/post/search.php?query=${query}`);
     }
 }
 
