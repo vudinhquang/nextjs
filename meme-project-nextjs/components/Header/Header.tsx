@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 
 import { useGlobalState } from "../../state";
 import "./header.scss";
+import HeaderSearch from "./HeaderSearch";
 
 export default function Header() {
     const router = useRouter();
@@ -103,14 +104,7 @@ export default function Header() {
                             </li>
                         </ul>
                     </nav>
-                    <div className="ass1-header__search">
-                        <form action="#">
-                            <label>
-                            <input type="search" name="search-text" className="form-control" placeholder="Nhập từ khóa ..." />
-                            <i className="icon-Search" />
-                            </label>
-                        </form>
-                    </div>
+                    <HeaderSearch />
                     <Link href="/posts/create">
                         <a className="ass1-header__btn-upload ass1-btn">
                             <i className="icon-Upvote" /> Upload

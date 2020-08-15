@@ -504,4 +504,6 @@ Chức năng Pagination (Load More Posts)
             ...listPosts,
             ...newPosts
         ])
+Xử lí Form cho chức năng Search Post
+    Nhập từ khóa tìm kiếm rồi nhấn Enter -> Redirect sang trang Search /search/q=~ 
     
