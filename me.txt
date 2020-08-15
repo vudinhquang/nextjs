@@ -520,4 +520,8 @@ Highlight keywords cho chức năng tìm kiếm
 Filter bài viết theo danh mục (Category)
     Category nằm ở trong Header là phần dùng chung mà không thuộc 1 page cụ thể nào cả
     -> gọi api ở _app
+Gọi API cho chức năng User Detail
+    Trang userDetail thì bắt buộc đăng nhập thì mới vào được 
+    /post/getListPostUserID.php?userid=2 phải có token thì mới gọi được 
+    Vào trang user Detail của 1 user không tồn tại -> Redirect về trang home
     
