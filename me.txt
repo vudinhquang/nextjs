@@ -525,4 +525,11 @@ Gọi API cho chức năng User Detail
     /post/getListPostUserID.php?userid=2 phải có token thì mới gọi được 
     Vào trang user Detail của 1 user không tồn tại -> Redirect về trang home
 Render dữ liệu User Detail
+Chức năng thay đổi mật khẩu
+    /member/password.php
+    Dựa vào giá trị của tooken giải mã ra thì sẽ biết được ai đang gọi api để thay đổi mật khẩu 
+        của người đó
+    Không cần giải quyết đến SEO vì trang này chỉ có 1 mình user vào thôi -> không cần gọi api
+        liên quan đến server mà chỉ cần sử lý phía client 
+    Sau khi thay đổi mật khẩu thành công thì Clear hết dữ liệu ở trong Form
     
