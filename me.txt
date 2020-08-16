@@ -532,4 +532,20 @@ Chức năng thay đổi mật khẩu
     Không cần giải quyết đến SEO vì trang này chỉ có 1 mình user vào thôi -> không cần gọi api
         liên quan đến server mà chỉ cần sử lý phía client 
     Sau khi thay đổi mật khẩu thành công thì Clear hết dữ liệu ở trong Form
+Chức năng User Profile và kĩ thuật upload avatar
+    01
+        Xử lý phần hình ảnh để người dùng khi upload có thể review trước
+        Khi upload hình thì chưa submit lên server ngay mà cho người dùng xem ở chế độ review nghĩa là 
+            URL sẽ mã hóa tấm hình(dạng object file) thành dạng base64 rồi render ra thẻ div cho người dùng xem trước
+        Xây dựng hàm xử lý trung gian người dùng không click trực tiếp vào ô input file mà click vào thẻ div(phần
+            hiển thị tấm hình)
+            -> Dùng useRef để trỏ cấu trúc DOM tới ô input chọn tệp file, khi click vào hình avatar thì gọi hàm
+            click trong javascript
+        Sau khi nhấn Submit và thay đổi thành công thì thực hiện thay đổi phần data mà mình lưu trong currentUser
+        /member/update.php api này không truyền được theo dạng json(raw->json)
+            api có sử dụng đến object file, đây là object ko thể mo tả trong json được
+                form-data 
+                Content-Type:  multipart/form-data
+        handleOnChange() hand cho dạng input text hay select box 
+        handleChangeFile() Handle cho dạng input file 
     
