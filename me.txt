@@ -548,4 +548,14 @@ Chức năng User Profile và kĩ thuật upload avatar
                 Content-Type:  multipart/form-data
         handleOnChange() hand cho dạng input text hay select box 
         handleChangeFile() Handle cho dạng input file 
+    02
+        FileReader.readAsDataURL() javascript
+            Mã hóa object file sang dạng URL đọc được ở dạng client, dạng này ko cần phải gửi lên server mà có thể cho người 
+                dùng có thể xem trước hình ảnh avatar đã chọn
+            https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL
+        formdata api by javascript
+            Giả lập lại form để có lời gọi api mà ko cần truyền Content-Type là json
+            https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData
+            Giả lập lại form bằng mã nguồn của javascript chứ không submit bằng Form 
+        Sau khi cập nhật thông tin của user xong thì cập nhật thông tin user vào state của currentUser
     

@@ -1,12 +1,15 @@
 import { useState, useRef } from "react";
 
 import { useGlobalState } from "../../state";
+import userService from "../../services/userService";
 
 
 const UserProfile = () => {
     const inputFileEl = useRef(null);
+    const [token] = useGlobalState("token");
     const [currentUser, setCurrentUser] = useGlobalState("currentUser");
     const [user, setUser] = useState(currentUser);
+    const [objFile, setObjFile] = useState({ file: null, base64URL: '' })
 
     const handleOnChange = (key: string) => (e) => {
         const value = e.target.value;
@@ -26,11 +29,42 @@ const UserProfile = () => {
 
         const file = listFiles[0] as File;
         if ( /\/(jpe?g|png|gif|bmp)$/i.test(file.type) ) {
+            const reader = new FileReader();
 
+            reader.addEventListener("load", function () {
+                // convert image file to base64 string
+                setObjFile({
+                    file,
+                    base64URL: reader.result as string,
+                })
+            }, false);
+            reader.readAsDataURL(file);
         } else {
             alert("File khong hop le!");
         }
     }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const data = {
+            fullname: user.fullname,
+            gender: user.gender,
+            description: user.description,
+            avatar: objFile.file
+        }
+        userService
+            .updateProfile(data, token)
+            .then(res => {
+                if(res.status === 200) {
+                    setCurrentUser(res.user);
+                    alert("Thay doi thong tin Profile thanh cong")
+                } else {
+                    alert(res.error);
+                }
+            })
+    }
+
+    const avatarURL = objFile.base64URL || user.profilepicture || "/images/avatar-02.png";
 
     return (
         <div className="ass1-login">
@@ -38,9 +72,9 @@ const UserProfile = () => {
                 <p>Profile</p>
                 <div className="ass1-login__form">
                     <div className="avatar" onClick={handleClickSelectFile}>
-                        <img src={ user.profilepicture || "/images/avatar-02.png" } alt="" />
+                        <img src={ avatarURL } alt="" />
                     </div>
-                    <form action="#">
+                    <form action="#" onSubmit={handleSubmit}>
                         <input
                             value={user.fullname} 
                             onChange={handleOnChange('fullname')}
