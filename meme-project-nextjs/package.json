@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@types/nprogress": "^0.2.0",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "atob": "^2.1.2",
@@ -16,10 +17,12 @@
     "dayjs": "^1.8.33",
     "es6-promise": "^4.2.8",
     "isomorphic-fetch": "^2.2.1",
+    "jquery": "1.9.1",
     "js-cookie": "^2.2.1",
     "next": "9.5.1",
     "next-images": "^1.4.1",
     "node-sass": "^4.14.1",
+    "nprogress": "^0.2.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-hooks-global-state": "^1.0.1",

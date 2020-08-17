@@ -558,4 +558,18 @@ Chức năng User Profile và kĩ thuật upload avatar
             https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData
             Giả lập lại form bằng mã nguồn của javascript chứ không submit bằng Form 
         Sau khi cập nhật thông tin của user xong thì cập nhật thông tin user vào state của currentUser
+Loading và Route events trong NextJs
+    Loading chờ data đã được chuẩn bị giữa các trang
+        -> Cần tạo loading toàn cục cho cả trang
+        -> đặt thêm loading trong _app vì tỏng _app là phầuseEffectn dùng chung cho tất cả các trang
+    router.events: You can listen to different events happening inside the Next.js Router. Here's a list of supported events
+        routeChangeStart(url) - Fires when a route starts to change
+        routeChangeComplete(url) - Fires when a route changed completely
+        routeChangeError(err, url) - Fires when there's an error when changing routes,
+    https://loading.io/
+    Dùng thư viện hỗ trợ nprogress
+        bootstrap@4.1.3 requires a peer of jquery@1.9.1 - 3 but none is installed
+            yarn add jquery@1.9.1
+        npprogress npm 
+            npm install --save nprogress
     
