@@ -585,4 +585,5 @@ Phân tích chức năng Create Post
         catagory được chuyển dạng string mỗi phần tử là id của catagory được cách nhau bởi dấu phẩy 
     Checkbox không đơn thuần chỉ là value như ô input bình thường mà nó còn có 2 trạng thái liên quan đến việc người dùng có check 
         vào hay không đó là checked(true/false)
+Xử lí CheckBox trong React
     

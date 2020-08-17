@@ -17,6 +17,15 @@ const initState = {
 export default function PostCreate() {
     useAuthen();
     const [postData, setPostData] = useState(initState);
+
+    const onChangeDetailForm = (key: string, value: any) => {
+        // console.log(key, value);
+        setPostData({
+            ...postData,
+            [key]: value
+        })
+    }
+    console.log("category", postData.category);
     return (
         <div className="container">
             {/*sections*/}
@@ -27,6 +36,7 @@ export default function PostCreate() {
                 <div className="col-lg-4">
                     <PostDetailSidebar
                         category={postData.category}
+                        onChangeDetailForm={onChangeDetailForm}
                     />
                 </div>
             </div>

@@ -1,14 +1,23 @@
 import { useGlobalState } from "../../state";
 
 type PropsType = {
-    category: string[]
+    category: string[];
+    onChangeDetailForm: (key: string, value: string[]) => void
 }
 
-const PostDetailSidebar: React.FC<PropsType> = ({ category }) => {
+const PostDetailSidebar: React.FC<PropsType> = ({ category, onChangeDetailForm }) => {
     const [listCategories] = useGlobalState("categories");
 
     const handleOnChange = (e) => {
-        
+        const isCheck = e.target.checked;
+        const value = e.target.value;
+        const findIdx = category.findIndex(cateId => cateId === value);
+        const isExisting = findIdx !== -1;
+        if(!isExisting && isCheck) {
+            onChangeDetailForm('category', [ ...category, value ]);
+        } else if(!isCheck) {
+            onChangeDetailForm('category', category.filter(id => id !== value));
+        }
     }
     
     return (
@@ -23,7 +32,7 @@ const PostDetailSidebar: React.FC<PropsType> = ({ category }) => {
                         return (
                             <label className="ass1-checkbox" key={cate.id}>
                                 <input 
-                                    type="radio" 
+                                    type="checkbox" 
                                     name="category" 
                                     value={cate.id}  
                                     onChange={handleOnChange}
