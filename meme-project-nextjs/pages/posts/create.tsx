@@ -25,13 +25,18 @@ export default function PostCreate() {
             [key]: value
         })
     }
-    console.log("category", postData.category);
+
     return (
         <div className="container">
             {/*sections*/}
             <div className="row">
                 <div className="col-lg-8">
-                    <PostDetailForm />
+                    <PostDetailForm 
+                        url_image={postData.url_image}
+                        post_content={postData.post_content}
+                        obj_image={postData.obj_image}
+                        onChangeDetailForm={onChangeDetailForm}
+                    />
                 </div>
                 <div className="col-lg-4">
                     <PostDetailSidebar

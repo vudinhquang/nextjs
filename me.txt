@@ -586,4 +586,5 @@ Phân tích chức năng Create Post
     Checkbox không đơn thuần chỉ là value như ô input bình thường mà nó còn có 2 trạng thái liên quan đến việc người dùng có check 
         vào hay không đó là checked(true/false)
 Xử lí CheckBox trong React
+Xử lí Form Data cho chức năng Create Post
     
