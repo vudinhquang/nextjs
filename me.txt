@@ -572,4 +572,17 @@ Loading và Route events trong NextJs
             yarn add jquery@1.9.1
         npprogress npm 
             npm install --save nprogress
+Phân tích chức năng Create Post
+    Phải đăng nhập rồi thì mới cho phép vào 
+    Giao diện gồm 2 column đó là: PostDetailForm và PostDetailSidebar nhưng đều thuộc 1 form 
+    Một bài viết có thể thuộc nhiều danh mục khác nhau
+    Có 2 button để chọn ảnh đó là: Chế ảnh từ mêm và đăng ảnh từ máy tính -> có 2 options cho người dùng
+        - Lấy ảnh từ nơi khác về và lấy đường link của ảnh đó
+        - Đăng ảnh từ máy tính -> giống như xử lý files trong trang profile, gửi lên server object file
+    Dữ liệu gửi đến api là ở dạng form-data chứ ko phải dạng json(/post/addNew.php)
+    Nếu người dùng vừa lấy ảnh từ nơi khác vừa đăng ảnh từ máy tính thì ưu tiên ảnh là ảnh được đăng từ bên ngoài vào 
+    Category là 1 danh sách, người dùng có thể chọn nên phía react có thể lưu ở dạng array khi gửi đến api theo dạn form-data thì 
+        catagory được chuyển dạng string mỗi phần tử là id của catagory được cách nhau bởi dấu phẩy 
+    Checkbox không đơn thuần chỉ là value như ô input bình thường mà nó còn có 2 trạng thái liên quan đến việc người dùng có check 
+        vào hay không đó là checked(true/false)
     
