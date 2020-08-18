@@ -3,6 +3,8 @@ import { useState } from "react";
 import { PostDetailForm } from "../../components/PostDetailForm";
 import { PostDetailSidebar } from "../../components/PostDetailSidebar";
 import { useAuthen } from "../../helpers/useAuthen";
+import { useGlobalState } from "../../state";
+import postService from "../../services/postService";
 
 const initState = {
     url_image: '',
@@ -16,6 +18,8 @@ const initState = {
 
 export default function PostCreate() {
     useAuthen();
+    const [token] = useGlobalState("token");
+    const [loading, setLoading] = useState(false);
     const [postData, setPostData] = useState(initState);
 
     const onChangeDetailForm = (key: string, value: any) => {
@@ -24,6 +28,24 @@ export default function PostCreate() {
             ...postData,
             [key]: value
         })
+    }
+
+    const handleSubmitPost = () => {
+        setLoading(true);
+        postService
+            .createNewPost(postData, token)
+            .then(res => {
+                if(res.status === 200) {
+                    console.log("res", res);
+                    alert("Dang bai viet thanh cong");
+                    setPostData(initState);
+                } else {
+                    alert(res.error);
+                }
+            })
+            .finally(() => {
+                setLoading(false);
+            })
     }
 
     return (
@@ -40,7 +62,9 @@ export default function PostCreate() {
                 </div>
                 <div className="col-lg-4">
                     <PostDetailSidebar
+                        loading={loading}
                         category={postData.category}
+                        handleSubmitPost={handleSubmitPost}
                         onChangeDetailForm={onChangeDetailForm}
                     />
                 </div>

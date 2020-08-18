@@ -587,4 +587,7 @@ Phân tích chức năng Create Post
         vào hay không đó là checked(true/false)
 Xử lí CheckBox trong React
 Xử lí Form Data cho chức năng Create Post
+Gọi API cho chức năng Create Post
+    Sau khi đăng ký thành công thì reset lại data
+        setPostData(initState);
     

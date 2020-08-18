@@ -1,11 +1,14 @@
 import { useGlobalState } from "../../state";
+import { Button } from "../Button";
 
 type PropsType = {
+    loading: boolean;
     category: string[];
+    handleSubmitPost: () => void;
     onChangeDetailForm: (key: string, value: string[]) => void
 }
 
-const PostDetailSidebar: React.FC<PropsType> = ({ category, onChangeDetailForm }) => {
+const PostDetailSidebar: React.FC<PropsType> = ({ loading, category, onChangeDetailForm, handleSubmitPost }) => {
     const [listCategories] = useGlobalState("categories");
 
     const handleOnChange = (e) => {
@@ -23,7 +26,10 @@ const PostDetailSidebar: React.FC<PropsType> = ({ category, onChangeDetailForm }
     return (
         <aside className="ass1-aside ass1-aside__edit-post">
             <div>
-                <a href="#" className="ass1-btn">Đăng bài</a>
+                <Button
+                    isLoading={loading}
+                    onClick={handleSubmitPost}
+                    className="ass1-btn">Đăng bài</Button>
             </div>
             <div className="ass1-aside__edit-post-head">
                 <span style={{display: 'block', width: '100%', marginBottom: '10px'}}>Chọn danh mục</span>
