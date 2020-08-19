@@ -591,4 +591,5 @@ Gọi API cho chức năng Create Post
     Sau khi đăng ký thành công thì reset lại data
         setPostData(initState);
 Gọi API cho chức năng Post Detail
+Render dữ liệu Post Detail và Post Categories
     

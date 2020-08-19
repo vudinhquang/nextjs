@@ -14,20 +14,23 @@ export type TypeCategory = {
 }
 
 type PostDetailDataProps = {
-    post: PostType;
+    postDetailData: PostType;
     postCategories: TypeCategory[];
     userPosts: PostType[];
 }
 
 type PostDetailProps = React.FC<InferGetServerSidePropsType<typeof getServerSideProps>>;
 
-const PostDetail: PostDetailProps = ({ userPosts, post, postCategories }) => {
+const PostDetail: PostDetailProps = ({ userPosts, postDetailData, postCategories }) => {
     return (
         <div className="container">
             {/*sections*/}
             <div className="row">
                 <div className="col-lg-8">
-                   <PostDetailContent />
+                   <PostDetailContent 
+                        postDetailData={postDetailData}
+                        postCategories={postCategories}
+                   />
                 </div>
                 <div className="col-lg-4">
                     <HomeSidebar userPosts={userPosts} />
@@ -49,7 +52,7 @@ export const getServerSideProps: GetServerSideProps<PostDetailDataProps> = async
     const [ postDetail, userPostsRes ] = await Promise.all([ postDetailPos, userPostsPos]);
   
     const props = {
-        post: postDetail?.data?.post || null,
+        postDetailData: postDetail?.data?.post || null,
         postCategories: postDetail?.data?.categories || [],
         userPosts: userPostsRes?.posts || [],
     }
