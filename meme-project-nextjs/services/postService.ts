@@ -56,6 +56,20 @@ const postService = {
         })
     },
 
+    getPostsByPostId: async({ postid, token }) => {
+        if(!postid || !token) {
+            return {
+                status: 500,
+                error: '',
+            }
+        }
+
+        const url = `/post/post.php?postid=${postid}`;
+        return api.callJson(url, {
+            token
+        })
+    },
+
     getPostSearch: async ({ query }) => {
         return api.callJson(`/post/search.php?query=${encodeURI(query)}`);
     },
