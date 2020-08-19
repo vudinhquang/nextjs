@@ -76,6 +76,11 @@ const postService = {
 
     getCategories: async () => {
         return api.callJson('/categories/index.php');
+    },
+
+    getCommentByPostId: async (postid) => {
+        const url = `/comment/comments.php?postid=${postid}`;
+        return api.callJson(url);
     }
 }
 

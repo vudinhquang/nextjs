@@ -5,6 +5,7 @@ import { PostDetailContent } from "../../components/PostDetailContent";
 import { getTokenSSRAndCSS } from "../../helpers";
 import postService from "../../services/postService";
 import { PostType } from "..";
+import userService from "../../services/userService";
 
 export type TypeCategory = {
     TAG_ID: string,
@@ -13,10 +14,21 @@ export type TypeCategory = {
     tag_value: string,
 }
 
+type TypeComment = {
+    CID: string,
+    PID: string,
+    USERID: string,
+    fullname: string,
+    profilepicture: string,
+    comment: string,
+    time_added: string,
+}
+
 type PostDetailDataProps = {
     postDetailData: PostType;
     postCategories: TypeCategory[];
     userPosts: PostType[];
+    comments: TypeComment[];
 }
 
 type PostDetailProps = React.FC<InferGetServerSidePropsType<typeof getServerSideProps>>;
@@ -48,13 +60,28 @@ export const getServerSideProps: GetServerSideProps<PostDetailDataProps> = async
   
     const postDetailPos = postService.getPostsByPostId({ postid, token })
     const userPostsPos = postService.getPostsByUserId({ token, userid });
+    const commentsPos = postService.getCommentByPostId(postid);
   
-    const [ postDetail, userPostsRes ] = await Promise.all([ postDetailPos, userPostsPos]);
+    const [ postDetail, userPostsRes, commentsRes] = await Promise.all([ postDetailPos, userPostsPos, commentsPos ]);
+
+    const postUserId = postDetail?.data?.post?.USERID || '';
+
+    const userInfoData = await userService.getUserById(postUserId);
   
+    let postDetailData = null;
+    if(postDetail?.data?.post) {
+        postDetailData = {
+            ...postDetail?.data?.post,
+            fullname: userInfoData?.user?.fullname || '',
+            profilepicture: userInfoData?.user?.profilepicture || '',
+        }
+    }
+
     const props = {
-        postDetailData: postDetail?.data?.post || null,
+        postDetailData,
         postCategories: postDetail?.data?.categories || [],
         userPosts: userPostsRes?.posts || [],
+        comments: commentsRes?.comments || [],
     }
   
     return {

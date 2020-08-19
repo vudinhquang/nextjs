@@ -592,4 +592,5 @@ Gọi API cho chức năng Create Post
         setPostData(initState);
 Gọi API cho chức năng Post Detail
 Render dữ liệu Post Detail và Post Categories
+Gọi API cho chức năng List Comments
     
