@@ -81,6 +81,20 @@ const postService = {
     getCommentByPostId: async (postid) => {
         const url = `/comment/comments.php?postid=${postid}`;
         return api.callJson(url);
+    },
+
+    postComment: async (postid: string, comment: string, token: string) => {
+        const url = '/comment/add_new.php';
+        const data = {
+            postid,
+            comment,
+        }
+        const method = "POST";
+        return api.callJson(url, {
+            data,
+            token,
+            method
+        })
     }
 }
 

@@ -594,4 +594,45 @@ Gọi API cho chức năng Post Detail
 Render dữ liệu Post Detail và Post Categories
 Gọi API cho chức năng List Comments
 Render List Comments ra giao diện
+Xây dựng chức năng Comment
+    Khi đăng 1 bình luận mới -> truyền lên phần nội dung bình luận và postId kèm theo đó là token để server biết là ai đang bình luận
+        và bình luận cho bài viết nào
+    Sau khi bình luận xong thì phải hiện thị bình luận mới nhất vào phần hiển thị comment 
+    Đặt 1 tên khác cho prop rồi sau đó tạo 1 state trùng tên với prop được truyền vào
+        listComments: initListComments  
+        const [listComments, setListComments] = useState(initListComments);
+    Ctrl + Shift + N: Mở tab mới
+    Tránh hiện tượng người dùng Enter nhiều lần(xử lý loading), khi Enter có gì đó phản hồi or chặn submit lần thứ 2
+    callback: callback sau khi thực hiện submit Form xong -> Khắc phục được hiện tượng Enter nhiều lần 
+        const handleSubmitForm = async (commentValue: string, callback: (e?: Error) => void) => {
+            try {
+                const result = await postService.postComment(postId, commentValue, token);
+                if(result.status !== 200) throw new Error("Dang binh luan khong thanh cong!");
+
+                const listCmtRes = await postService.getCommentByPostId(postId);
+
+                if(result.status === 200) {
+                    setListComments(listCmtRes.comments);
+                    callback();
+                }
+
+            } catch(e) {
+                // Khi throw new Error chay vao trong catch
+                callback(e);
+            }
+        }
+
+        const handleSubmit = (e) => {
+            e.preventDefault();
+            if(loading === true) return;
+            if(commentValue.trim().length !== 0) {
+                // Thong bao ra ben ngoai de goi api
+                setLoading(true);
+                handleSubmitForm(commentValue, (e) => {
+                    setLoading(false);
+                });
+            } else {
+                alert("Vui long nhap noi dung binh luan!");
+            }
+        }
     

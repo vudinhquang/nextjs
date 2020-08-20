@@ -40,7 +40,7 @@ const PostCommentList: React.FC<PropsType> = ({ listComments }) => {
                                 <Link href="/users/[userId]" as={`/users/${comment.USERID}`}>
                                     <a className="ass1-comments__name">{comment.fullname}</a>
                                 </Link>
-                                <span className="ass1-comments__passed">{
+                                <span className="ass1-comments__passed"> {
                                     dayjs(comment?.time_added).locale(viLocal).fromNow()
                                 }</span>
                                 <p>{comment.comment}</p>
