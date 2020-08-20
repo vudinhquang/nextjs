@@ -34,7 +34,10 @@ const UserDetail: NextPage<PropsType> = ({ userDetailInfo, userDetailPosts }) =>
                 userDetailInfo={userDetailInfo} 
             />
 
-            <UserDetailPosts userDetailPosts={userDetailPosts} />
+            <UserDetailPosts 
+                userDetailPosts={userDetailPosts} 
+                userDetailInfo={userDetailInfo} 
+            />
         </div>
     )
 }

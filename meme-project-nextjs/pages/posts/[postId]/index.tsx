@@ -1,11 +1,11 @@
 import { GetServerSideProps, NextPageContext, InferGetServerSidePropsType } from "next";
 
-import { HomeSidebar } from "../../components/HomeSidebar";
-import { PostDetailContent } from "../../components/PostDetailContent";
-import { getTokenSSRAndCSS } from "../../helpers";
-import postService from "../../services/postService";
-import { PostType } from "..";
-import userService from "../../services/userService";
+import { HomeSidebar } from "../../../components/HomeSidebar";
+import { PostDetailContent } from "../../../components/PostDetailContent";
+import { getTokenSSRAndCSS } from "../../../helpers";
+import postService from "../../../services/postService";
+import { PostType } from "../..";
+import userService from "../../../services/userService";
 
 export type TypeCategory = {
     TAG_ID: string,

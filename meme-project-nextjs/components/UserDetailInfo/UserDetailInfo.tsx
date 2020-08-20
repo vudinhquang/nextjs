@@ -13,7 +13,7 @@ const UserDetailInfo: React.FC<PropsType> = ({ userDetailInfo, postCount }) => {
     const [currentUser] = useGlobalState("currentUser");
     if(!userDetailInfo) return null;
 
-    const check = currentUser.USERID === userDetailInfo.USERID;
+    const check = currentUser?.USERID === userDetailInfo.USERID;
 
     return (
         <div className="ass1-head-user">

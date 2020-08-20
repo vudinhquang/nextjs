@@ -635,4 +635,12 @@ Xây dựng chức năng Comment
                 alert("Vui long nhap noi dung binh luan!");
             }
         }
+Xây dựng chức năng Edit Post
+    Trang Profile nếu người dùng xem trang user của người khác thì khi click vào 1 post nào đó thì sẽ chuyển sang trang Detail post.
+        Ngược lại nếu như người dùng đó xem trang detail của mình thì sẽ nhảy sang trang edit post
+    Edit Post 01
+        1. file [postId].tsx -> /posts/20 
+        2. folder [postId]
+            -> index.tsx -> /posts/20 
+            -> edit.tsx  -> /posts/20/edit
     
