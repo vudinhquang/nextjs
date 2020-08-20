@@ -1,13 +1,15 @@
+import { useState } from "react";
+
 import "./PostDetailContent.css";
 import { PostCommentForm } from "../PostCommentForm"
 import { PostCommentList } from "../PostCommentList"
 import { PostItem } from "../PostItem";
 import Link from "next/link";
 import { PostType } from "../../pages";
-import { TypeCategory } from "../../pages/posts/[postId]";
-
+import { TypeCategory, TypeComment } from "../../pages/posts/[postId]";
 
 type PropsType = {
+    listComments: TypeComment[];
     postDetailData: PostType;
     postCategories: TypeCategory[];
 }
@@ -15,8 +17,10 @@ type PropsType = {
 const PostDetailContent: React.FC<PropsType> = ({
     postDetailData,
     postCategories,
+    listComments
 }) => {
-  return (
+    
+    return (
     <div className="ass1-section__list">
         {/* <div className="ass1-section">
             <div className="ass1-section__head">
@@ -131,9 +135,9 @@ const PostDetailContent: React.FC<PropsType> = ({
 
         <PostCommentForm />
 
-        <PostCommentList />
+        <PostCommentList listComments={listComments} />
     </div>
-  );
+    );
 };
 
 export default PostDetailContent;
