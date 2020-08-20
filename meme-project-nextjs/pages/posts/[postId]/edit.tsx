@@ -11,18 +11,20 @@ import { PostType } from "../..";
 import { TypeCategory } from ".";
 
 type PostEditDataProps = {
+    postid: string;
     postDetailData: PostType;
     postCategories: TypeCategory[];
 }
 
 type PostEditProps = React.FC<InferGetServerSidePropsType<typeof getServerSideProps>>;
 
-const PostEdit: PostEditProps = ({ postDetailData, postCategories }) => {
+const PostEdit: PostEditProps = ({ postDetailData, postCategories, postid }) => {
     useAuthen();
     const [token] = useGlobalState("token");
     const [loading, setLoading] = useState(false);
     const [postData, setPostData] = useState(() => {
         return {
+            postid,
             url_image: postDetailData.url_image,
             post_content: postDetailData.post_content,
             category: postCategories.map(category => category.tag_index),
@@ -50,19 +52,28 @@ const PostEdit: PostEditProps = ({ postDetailData, postCategories }) => {
     }
 
     const handleSubmitPost = () => {
+        if(loading === true) return;
         setLoading(true);
-        // postService
-        //     .createNewPost(postData, token)
-        //     .then(res => {
-        //         if(res.status === 200) {
-        //             alert("Cap nhat bai viet thanh cong");
-        //         } else {
-        //             alert(res.error);
-        //         }
-        //     })
-        //     .finally(() => {
-        //         setLoading(false);
-        //     })
+        postService
+            .editPost(postData, token)
+            .then(res => {
+                if(res.status === 200) {
+                    alert("Cap nhat bai viet thanh cong");
+                    setPostData({
+                        ...postData,
+                        url_image: res?.data?.post?.url_image,
+                        obj_image: {
+                            file: null,
+                            base64: '',
+                        }
+                    })
+                } else {
+                    alert(res.error);
+                }
+            })
+            .finally(() => {
+                setLoading(false);
+            })
     }
 
     return (
@@ -100,6 +111,7 @@ export const getServerSideProps: GetServerSideProps<PostEditDataProps> = async (
     const [ postDetail ] = await Promise.all([ postDetailPos ]);
   
     const props = {
+        postid,
         postDetailData: postDetail?.data?.post,
         postCategories: postDetail?.data?.categories || []
     }

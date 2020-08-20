@@ -658,4 +658,15 @@ Xây dựng chức năng Edit Post
                 };
             });
         Khi thực hiện chọn 1 hình ảnh từ máy tình thì tiến hành set state url_image(ảnh chọn từ meme) về rỗng
+    Edit Post 03
+        Sau khi gọi api cập nhật thành công thì lấy giá trị url_image của res từ server trả về gán lại cho url_image trong state 
+            file -> reset về rỗng, null
+                setPostData({
+                    ...postData,
+                    url_image: res?.data?.post?.url_image,
+                    obj_image: {
+                        file: null,
+                        base64: '',
+                    }
+                }) 
     
