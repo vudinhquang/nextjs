@@ -643,4 +643,19 @@ Xây dựng chức năng Edit Post
         2. folder [postId]
             -> index.tsx -> /posts/20 
             -> edit.tsx  -> /posts/20/edit
+    Edit Post 02
+        Ban đầu cần gọi api để lấy thông tin của post để truyền vào state mặc định ban đầu -> hiển thị lên view 
+        Khởi tạo 1 state bằng cách return giá trị của 1 hàm
+            const [postData, setPostData] = useState(() => {
+                return {
+                    url_image: postDetailData.url_image,
+                    post_content: postDetailData.post_content,
+                    category: postCategories.map(category => category.tag_index),
+                    obj_image: {
+                        file: null,
+                        base64: ''
+                    }
+                };
+            });
+        Khi thực hiện chọn 1 hình ảnh từ máy tình thì tiến hành set state url_image(ảnh chọn từ meme) về rỗng
     

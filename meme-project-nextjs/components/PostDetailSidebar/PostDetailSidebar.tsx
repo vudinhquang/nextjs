@@ -41,6 +41,7 @@ const PostDetailSidebar: React.FC<PropsType> = ({ loading, category, onChangeDet
                                     type="checkbox" 
                                     name="category" 
                                     value={cate.id}  
+                                    checked={category.indexOf(cate.id.toString()) !== -1}
                                     onChange={handleOnChange}
                                 />
                                 <span />
