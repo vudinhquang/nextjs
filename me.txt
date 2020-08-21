@@ -670,4 +670,50 @@ Xây dựng chức năng Edit Post
                     }
                 }) 
     Edit Post 04
+
+=============================================================================================
+                            Tối ưu SEO trong ứng dụng SSR
+
+Các kĩ thuật tối ưu SEO trong mã nguồn
+    # Một số bước cải thiện SEO cho Website
+        - https://www.link-assistant.com/news/html-tags-for-seo.html
+        - https://www.xml-sitemaps.com
+        - https://ogp.me/
+        - http://www.robotstxt.org/
+        - https://support.google.com/webmasters/answer/6062596?hl=en
+        - https://jpwebseo.com/file-robots-txt-la-gi-cach-su-dung-robot-txt-khi-lam-seo
+    ## SSR next sử lý
+    ## Title tag
+        Tiêu đề được thay đổi khi vào các trang khác nhau(SSR)
+    ## Description meta, keywords meta, ...
+        -> Thẻ meta trong html
+        Đảm bảo render phía server
+        Network - Doc response
+        Dùng thẻ Head
+        -> https://github.com/vercel/next-plugins
+            next-seo
+            yarn add next-seo
+    ## Open Graph
+        Giúp khi chia sẻ bài viết lên mạng xã hội nó sẽ giúp mình render ra các tiêu đề, hình ảnh hay nội dụng xem
+            trước trong bài đăng
+    ## robots.txt
+        - Khai báo để cho những con robot biết trang nào được phép và không được phép đánh index
+          Mục đích là để cho các con robot cào dữ liệu ngặn chặn 1 số đường link để ko cho phép nó đánh địa chỉ mục
+        - Trang tham khảo đó là trang https://tiki.vn/ cũng sử dụng nextjs, để xem nội dung robots.txt 
+            https://tiki.vn/robots.txt 
+    ## Cannonical
+        - A 
+        - B -> meta rel="cannonical" href="http://A.com"   (canonical="https://www.canonical.ie/")
+        - C
+        - Trang Web có những trang giống nhau hoặc tương tự nhau về mặt nội dung.
+        - Nội dung của trang B và trang C tương tự và gần giống trang A
+        - Khai báo Cannonical để công cụ search engine ưu tiên trang nào hơn.
+    ## Site Map 
+        - Khai báo sơ đồ trang Web
+        https://www.xml-sitemaps.com
+            Có thể sử dụng tool này để tạo ra file
+    ## Favicon, H1, alt
+        Favicon: icon của trang
+        Một trang thì chỉ có 1 thẻ h1
+        Hình ảnh thì nên cho cả alt 
     
